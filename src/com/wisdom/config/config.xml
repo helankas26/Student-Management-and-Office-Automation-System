@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <jdbc>
+        <url>jdbc:mysql://localhost:3306/wisdom</url>
+        <driver>com.mysql.cj.jdbc.Driver</driver>
+        <username>root</username>
+        <password>4806650</password>
+    </jdbc>
+</config>
