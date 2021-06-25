@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-Jun-2021, 08:28:31
+    Author     : Helanka
+*/
+
+.main-background {
+    -fx-background-color: #4170a7;
+}
+
+.btn-login {
+    -fx-background-color: #f2f2f2;
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
+    -fx-pref-height: 44px;
+    -fx-pref-width: 101px;
+}
+
+.fields-login {
+    -fx-background-color: transparent;
+    -fx-border-color: #2e2e2e;
+    -fx-pref-width: 200px;
+    -fx-font-size: 14px;
+    -fx-border-width: 0px 0px 2px 0px;
+}

@@ -34,7 +34,7 @@ public class DBConnectionUtil {
     private final String password;
 
     private DBConnectionUtil() throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
-        InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.xml");
+        InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("com/wisdom/config/config.xml");
         Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(input));
         XPath xpath = XPathFactory.newInstance().newXPath();
         this.url = (String) xpath.compile("//config//jdbc//url").evaluate(document, XPathConstants.STRING);
@@ -69,7 +69,6 @@ public class DBConnectionUtil {
     
     public Connection getConnection() {
         try {
-            System.out.println(driver);
             Class.forName(driver);
             connection = DriverManager.getConnection(url, username, password);
         } catch (ClassNotFoundException ex) {
