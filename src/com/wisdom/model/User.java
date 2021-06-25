@@ -9,7 +9,7 @@ package com.wisdom.model;
  *
  * @author Helanka
  */
-public abstract class User {
+public class User {
     
     private String userID;
     private String initial;
