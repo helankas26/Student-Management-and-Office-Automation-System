@@ -198,12 +198,12 @@ public abstract class IDGeneratorUtilDAO {
         try {
             con = dbConnectionUtil.getConnection();
            
-            String studentIDCol = "SELECT staffID FROM staff";
+            String studentIDCol = "SELECT StudentID FROM student";
             preparedStatement = con.prepareStatement(studentIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = preparedStatement.executeQuery();
          
             while (resultSet.next()) {
-                currentStudentID.add(resultSet.getString("staffID"));
+                currentStudentID.add(resultSet.getString("StudentID"));
             }
 
         } catch (SQLException ex) {
@@ -226,13 +226,13 @@ public abstract class IDGeneratorUtilDAO {
         try {
             con = dbConnectionUtil.getConnection();
            
-            String studentIDCol = "SELECT staffID FROM staff WHERE JoinedDate = ?";
+            String studentIDCol = "SELECT StudentID FROM student WHERE JoinedDate = ?";
             preparedStatement = con.prepareStatement(studentIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, date);
             resultSet = preparedStatement.executeQuery();
          
             while (resultSet.next()) {
-                currentStudentID.add(resultSet.getString("staffID"));
+                currentStudentID.add(resultSet.getString("StudentID"));
             }
 
         } catch (SQLException ex) {
