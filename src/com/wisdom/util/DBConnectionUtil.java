@@ -53,7 +53,6 @@ public class DBConnectionUtil {
                 }
             }
         } catch (SQLException ex) {
-            System.out.println("Error in creating singleton DBConnectionUtil object");
             Logger.getLogger(DBConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(DBConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);

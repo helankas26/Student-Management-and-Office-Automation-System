@@ -43,7 +43,7 @@ public abstract class IDGeneratorUtilDAO {
         } finally {
             try {
                 resultSet.close();
-                preparedStatement.cancel();
+                preparedStatement.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -71,7 +71,7 @@ public abstract class IDGeneratorUtilDAO {
         } finally {
             try {
                 resultSet.close();
-                preparedStatement.cancel();
+                preparedStatement.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,7 +99,7 @@ public abstract class IDGeneratorUtilDAO {
         } finally {
             try {
                 resultSet.close();
-                preparedStatement.cancel();
+                preparedStatement.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -127,7 +127,7 @@ public abstract class IDGeneratorUtilDAO {
         } finally {
             try {
                 resultSet.close();
-                preparedStatement.cancel();
+                preparedStatement.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,7 +155,7 @@ public abstract class IDGeneratorUtilDAO {
         } finally {
             try {
                 resultSet.close();
-                preparedStatement.cancel();
+                preparedStatement.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -183,13 +183,70 @@ public abstract class IDGeneratorUtilDAO {
         } finally {
             try {
                 resultSet.close();
-                preparedStatement.cancel();
+                preparedStatement.close();
                 con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return currentSubjectID;
+    }
+    
+    //To get current studentID set from student table
+    public static ArrayList<String> getCurrentStudentID() {
+        ArrayList<String> currentStudentID = new ArrayList<String>();
+        try {
+            con = dbConnectionUtil.getConnection();
+           
+            String studentIDCol = "SELECT staffID FROM staff";
+            preparedStatement = con.prepareStatement(studentIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+         
+            while (resultSet.next()) {
+                currentStudentID.add(resultSet.getString("staffID"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return currentStudentID;
+    }
+    
+    //To get current studentID set for specified date from student table
+    public static ArrayList<String> getCurrentStudentID(String date) {
+        ArrayList<String> currentStudentID = new ArrayList<String>();
+        try {
+            con = dbConnectionUtil.getConnection();
+           
+            String studentIDCol = "SELECT staffID FROM staff WHERE JoinedDate = ?";
+            preparedStatement = con.prepareStatement(studentIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, date);
+            resultSet = preparedStatement.executeQuery();
+         
+            while (resultSet.next()) {
+                currentStudentID.add(resultSet.getString("staffID"));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(IDGeneratorUtilDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return currentStudentID;
     }
     
 }

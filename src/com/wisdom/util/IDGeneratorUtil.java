@@ -5,6 +5,8 @@
  */
 package com.wisdom.util;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -14,9 +16,6 @@ import java.util.ArrayList;
 public class IDGeneratorUtil {
     
     private volatile static IDGeneratorUtil instance;
-    private String year;
-    private String month;
-    private String date;
     private final String LOGIN = "LOGIN";
     private final String STAFF = "STAFF";
     private final String TEACHER = "TECHR";
@@ -29,6 +28,7 @@ public class IDGeneratorUtil {
     private String classID;
     private String categoryID;
     private String subjectID;
+    private String studentID;
 
     private IDGeneratorUtil() {
     }
@@ -74,8 +74,13 @@ public class IDGeneratorUtil {
         return subjectID;
     }
     
-    //To generate
-    private void generateID(String keyword,ArrayList<String> currentID) {
+    public String getStudentID(String joiningDate) {
+        generateStudentID(joiningDate, IDGeneratorUtilDAO.getCurrentStudentID());
+        return studentID;
+    }
+    
+    //To generate unique ID
+    private void generateID(String prefix,ArrayList<String> currentID) {
         int rowCount = currentID.size();
         String id = null;
         
@@ -83,20 +88,20 @@ public class IDGeneratorUtil {
             int counter = Integer.parseInt(currentID.get(currentID.size() - 1).replaceAll("[\\D]", ""));
             if (counter < 999) {
                 if (counter < 9) {
-                    id = keyword + "00" + (++counter);
+                    id = prefix + "00" + (++counter);
                 } else if (counter < 99) {
-                    id = keyword + "0" + (++counter);
+                    id = prefix + "0" + (++counter);
                 } else {
-                    id = keyword + (++counter);
+                    id = prefix + (++counter);
                 }
             } else {
-                System.out.println(keyword +"ID creation limit is exceeded for the system");
+                System.out.println(prefix +"ID creation limit is exceeded for the system");
             }
         } else if (rowCount == 0) {
-            id = keyword + "00" + (++rowCount);
+            id = prefix + "00" + (++rowCount);
         }
         
-        switch (keyword) {
+        switch (prefix) {
             case LOGIN:
                 loginID = id;
                 break;
@@ -118,4 +123,46 @@ public class IDGeneratorUtil {
         }
     }
 
+    //To generate studentID
+    private void generateStudentID(String joiningDate, ArrayList<String> currentID) {
+        LocalDate joinDate = LocalDate.parse(joiningDate);
+        DateTimeFormatter yearFormat = DateTimeFormatter.ofPattern("yy");
+        DateTimeFormatter monthFormat = DateTimeFormatter.ofPattern("MM");
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("dd");
+        String year = joinDate.format(yearFormat);
+        String month = joinDate.format(monthFormat);
+        String date = joinDate.format(dateFormat);
+        String prefix = year + month + date;
+        
+        int rowCount = currentID.size();
+        
+        if (rowCount > 0) {
+            String lastID = currentID.get(currentID.size() - 1);
+            String previousPrefix = lastID.substring(0, 6);
+            int counter = Integer.parseInt(lastID.substring(6, 8));
+            
+            DateTimeFormatter stringParseTODate = DateTimeFormatter.ofPattern("yyMMdd");
+            LocalDate parsedDate = LocalDate.parse(previousPrefix, stringParseTODate);
+            
+            if (joinDate.isEqual(parsedDate)) {
+                if (counter < 99) {
+                    if (counter < 9) {
+                        studentID = previousPrefix + "0" + (++counter);
+                    } else {
+                        studentID = previousPrefix + (++counter);
+                    }
+                } else {
+                    System.out.println("Student ID creation limit is exceeded for the system today");
+                }
+            } else if (joinDate.isAfter(parsedDate)) {
+                studentID = prefix + "00";
+            } else if (joinDate.isBefore(parsedDate)) {
+                generateStudentID(joiningDate, IDGeneratorUtilDAO.getCurrentStudentID(joinDate.toString()));
+            }
+
+        } else if (rowCount == 0) {
+            studentID = prefix + "00";
+        } 
+    }
+    
 }
