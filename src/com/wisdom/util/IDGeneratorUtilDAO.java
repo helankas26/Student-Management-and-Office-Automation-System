@@ -17,13 +17,16 @@ import java.util.logging.Logger;
  *
  * @author Helanka
  */
-public abstract class IDGeneratorUtilDAO {
+public final class IDGeneratorUtilDAO {
     
     private static DBConnectionUtil dbConnectionUtil = DBConnectionUtil.getInstance();
     private static PreparedStatement preparedStatement;
     private static ResultSet resultSet;
     private static Connection con;
-    
+
+    private IDGeneratorUtilDAO() {
+    }
+
     //To get current loginID set from login table
     public static ArrayList<String> getCurrentLoginID() {
         ArrayList<String> currentLoginID = new ArrayList<String>();

@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
  *
  * @author Helanka
  */
-public class DBConnectionUtil {
+public final class DBConnectionUtil {
     
     private volatile static DBConnectionUtil instance;
     private Connection connection;

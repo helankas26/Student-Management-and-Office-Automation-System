@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author Helanka
  */
-public class IDGeneratorUtil {
+public final class IDGeneratorUtil {
     
     private volatile static IDGeneratorUtil instance;
     private final String LOGIN = "LOGIN";
