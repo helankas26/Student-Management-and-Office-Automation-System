@@ -10,23 +10,27 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" styleClass="main-background" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.LoginController">
+<AnchorPane fx:id="anchorPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" styleClass="main-background" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.LoginController">
    <children>
-      <ImageView fitHeight="673.0" fitWidth="476.0" layoutX="412.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/Login.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="btnLogin" layoutX="600.0" layoutY="441.0" onAction="#btnLoginActionPerformed" prefHeight="44.0" prefWidth="101.0" styleClass="btn-login" text="LOGIN" textAlignment="CENTER">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </JFXButton>
-      <TextField fx:id="txtUsername" layoutX="551.0" layoutY="306.0" promptText="Username" styleClass="fields-login" />
-      <PasswordField fx:id="txtPassword" layoutX="551.0" layoutY="374.0" onInputMethodTextChanged="#txtSetDefaultColor" promptText="Password" styleClass="fields-login" />
-      <Label fx:id="lblUsername" layoutX="551.0" layoutY="340.0" prefHeight="18.0" prefWidth="200.0" style="-fx-text-fill: #de2700;" />
-      <Label fx:id="lblPassword" layoutX="551.0" layoutY="408.0" prefHeight="18.0" prefWidth="200.0" style="-fx-text-fill: #de2700;" />
-      <FontAwesomeIcon fill="#f2f2f2" glyphName="USER" layoutX="518.0" layoutY="330.0" size="2em" />
-      <FontAwesomeIcon fill="#f2f2f2" glyphName="KEY" layoutX="515.0" layoutY="398.0" size="2em" />
+      <AnchorPane layoutX="412.0" layoutY="49.0" prefHeight="673.0" prefWidth="476.0">
+         <children>
+            <ImageView fitHeight="673.0" fitWidth="476.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Login.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnLogin" layoutX="188.0" layoutY="400.0" onAction="#btnLoginActionPerformed" prefHeight="44.0" prefWidth="101.0" styleClass="btn-login" text="LOGIN" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+            <TextField fx:id="txtUsername" layoutX="142.0" layoutY="256.0" promptText="Username" styleClass="fields-login" />
+            <PasswordField fx:id="txtPassword" layoutX="142.0" layoutY="324.0" onInputMethodTextChanged="#txtSetDefaultColor" promptText="Password" styleClass="fields-login" />
+            <Label fx:id="lblUsername" layoutX="142.0" layoutY="291.0" prefHeight="18.0" prefWidth="200.0" style="-fx-text-fill: #de2700;" />
+            <Label fx:id="lblPassword" layoutX="142.0" layoutY="359.0" prefHeight="18.0" prefWidth="200.0" style="-fx-text-fill: #de2700;" />
+            <FontAwesomeIcon fill="#f2f2f2" glyphName="USER" layoutX="107.0" layoutY="279.0" size="2em" />
+            <FontAwesomeIcon fill="#f2f2f2" glyphName="KEY" layoutX="107.0" layoutY="349.0" size="2em" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
