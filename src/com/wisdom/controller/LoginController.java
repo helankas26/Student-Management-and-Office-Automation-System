@@ -12,7 +12,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,10 +26,13 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 /**
  * FXML Controller class
@@ -91,11 +97,51 @@ public class LoginController implements Initializable {
                         Scene scene = new Scene(root);
                         Stage primaryStage = new Stage();
                         primaryStage.setScene(scene);
+                        primaryStage.setMaximized(true);
+                        primaryStage.initStyle(StageStyle.DECORATED);
+                        primaryStage.setTitle("WISDOM Institution [" + login.getUser().getFirstName() + "]");
+                        primaryStage.getIcons().add(new Image("com/wisdom/resources/wisdom-title.png"));
                         primaryStage.show();
+                        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                            @Override
+                            public void handle(WindowEvent event) {
+                                Stage primaryStage = (Stage) mainDashboardController.getAnchorPaneMain().getScene().getWindow();
+
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                alert.initModality(Modality.APPLICATION_MODAL);
+                                alert.initOwner(primaryStage);
+                                alert.setTitle("Exit Program");
+                                alert.setHeaderText("Confirm Exit");
+                                alert.setContentText("Do you really want to logout?");
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if (result.isPresent() && result.get() == ButtonType.OK) {
+                                    primaryStage = (Stage) mainDashboardController.getAnchorPaneMain().getScene().getWindow();
+                                    primaryStage.close();
+
+                                    Stage stage = new Stage();
+
+                                    Parent root = null;
+                                    try {
+                                        root = FXMLLoader.load(getClass().getResource("/com/wisdom/view/Login.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+
+                                    Scene scene = new Scene(root);
+                                    stage.setTitle("WISDOM Institution");
+                                    stage.getIcons().add(new Image("com/wisdom/resources/wisdom-title.png"));
+                                    login = null;
+                                    stage.setScene(scene);
+                                    stage.show();
+                                    
+                                } else {
+                                    event.consume();
+                                }
+                            }
+                        });
 
                         Stage stage = (Stage) anchorPaneMain.getScene().getWindow();
                         stage.close();
-                        
                         
                     } else {
                         Stage stage = (Stage) anchorPaneMain.getScene().getWindow();
@@ -107,7 +153,7 @@ public class LoginController implements Initializable {
                         alert.setHeaderText("Access denied");
                         alert.setContentText("you are not authorized to access the system.");
                         Optional<ButtonType> result = alert.showAndWait();
-                        if (result.get() == ButtonType.OK) {
+                        if (result.isPresent() && result.get() == ButtonType.OK) {
                             txtUsername.setText("");
                             txtUsername.requestFocus();
                             txtPassword.setText("");
@@ -156,6 +202,4 @@ public class LoginController implements Initializable {
         lable.setText(msg);
     }
 
-    
-    
 }

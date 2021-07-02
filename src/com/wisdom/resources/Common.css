@@ -27,3 +27,23 @@ and open the template in the editor.
     -fx-font-size: 14px;
     -fx-border-width: 0px 0px 2px 0px;
 }
+
+.mainMenuBar-background {
+    -fx-background-color: #e6e6e6;
+}
+
+.mainDashboard-background {
+    -fx-background-color: #696969;
+}
+
+.mainDashboard-border {
+    -fx-border-color: #c4c4c4;
+    -fx-border-width: 0px 2px 2px 2px;
+}
+
+.mainMenuBar-button {
+    -fx-background-radius: 4px;
+    -fx-border-radius: 4px;
+    -fx-pref-height: 64px;
+    -fx-background-color: transparent;
+}
