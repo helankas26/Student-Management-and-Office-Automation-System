@@ -68,6 +68,8 @@ public class LoginDAO {
                     login.setPassword(null);
                 }
 
+            } else {
+                login.setLoginID(null);
             }
             
         } catch (SQLException ex) {

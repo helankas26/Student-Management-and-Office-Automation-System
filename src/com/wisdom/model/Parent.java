@@ -12,8 +12,7 @@ package com.wisdom.model;
 public class Parent {
     
     private String title;
-    private String firstName; 
-    private String lastName; 
+    private String firstName;
 
     public Parent() {
     }
@@ -32,14 +31,6 @@ public class Parent {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
     
 }

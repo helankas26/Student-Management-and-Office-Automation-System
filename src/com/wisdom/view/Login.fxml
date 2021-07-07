@@ -20,7 +20,7 @@
                   <Image url="@../resources/Login.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="btnLogin" layoutX="188.0" layoutY="400.0" onAction="#btnLoginActionPerformed" prefHeight="44.0" prefWidth="101.0" styleClass="btn-login" text="LOGIN" textAlignment="CENTER">
+            <JFXButton fx:id="btnLogin" buttonType="RAISED" focusTraversable="false" layoutX="188.0" layoutY="400.0" onAction="#btnLoginActionPerformed" prefHeight="44.0" prefWidth="101.0" styleClass="btn-login" text="LOGIN" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

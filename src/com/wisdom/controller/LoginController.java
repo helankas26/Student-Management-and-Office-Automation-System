@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
     @FXML
     private AnchorPane anchorPaneMain;
     
-    Login login = new Login();
+    Login login = null;
     LoginDAO loginDAO = new LoginDAO();
     
     /**
@@ -74,6 +74,7 @@ public class LoginController implements Initializable {
     @FXML
     private void btnLoginActionPerformed(ActionEvent event) throws IOException {
         if (isFieldEmpty()) {
+            login = new Login();
             login.setUserName(txtUsername.getText().trim());
             login.setPassword(txtPassword.getText().trim());
 

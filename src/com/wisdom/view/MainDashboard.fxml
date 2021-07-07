@@ -16,13 +16,9 @@
 
 <AnchorPane fx:id="anchorPaneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="1280.0" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.MainDashboardController">
    <children>
-      <BorderPane fx:id="borderPaneMain" layoutX="427.0" layoutY="228.0" prefHeight="780.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="borderPaneMain" layoutX="427.0" layoutY="228.0" prefHeight="780.0" prefWidth="1280.0" styleClass="mainDashboard-border" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="75.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <styleClass>
-                  <String fx:value="mainMenuBar-background" />
-                  <String fx:value="mainDashboard-border" />
-               </styleClass>
                <children>
                   <MenuButton layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefWidth="139.5" styleClass="mainMenuBar-button" text="STUDENT">
                      <graphic>
@@ -39,7 +35,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <items>
-                        <MenuItem fx:id="btnStudentInsert" mnemonicParsing="false" onAction="#btnStudentInsertActionPerformed" text="INSERT">
+                        <MenuItem mnemonicParsing="false" onAction="#btnStudentInsertActionPerformed" text="INSERT">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -48,7 +44,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnStudentUpdate" mnemonicParsing="false" onAction="#btnStudentUpdateActionPerformed" text="UPDATE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnStudentUpdateActionPerformed" text="UPDATE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -57,7 +53,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnStudentDelete" mnemonicParsing="false" onAction="#btnStudentDeleteActionPerformed" text="DELETE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnStudentDeleteActionPerformed" text="DELETE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -76,7 +72,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnStudentClassesInsert" mnemonicParsing="false" onAction="#btnStudentClassesInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnStudentClassesInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -85,7 +81,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnStudentClassesDelete" mnemonicParsing="false" onAction="#btnStudentClassesDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnStudentClassesDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -95,7 +91,7 @@
                                  </graphic>
                               </MenuItem>
                               <SeparatorMenuItem mnemonicParsing="false" />
-                              <MenuItem fx:id="btnFreeCard" mnemonicParsing="false" onAction="#btnFreeCardActionPerformed" text="FREE CARD">
+                              <MenuItem mnemonicParsing="false" onAction="#btnFreeCardActionPerformed" text="FREE CARD">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -105,7 +101,7 @@
                                  </graphic>
                               </MenuItem>
                               <SeparatorMenuItem mnemonicParsing="false" />
-                              <MenuItem fx:id="btnAddToAttendance" mnemonicParsing="false" onAction="#btnAddToAttendanceActionPerformed" text="ADD TO ATTENDANCE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnAddToAttendanceActionPerformed" text="ADD TO ATTENDANCE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -126,7 +122,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnPastStudentInsert" mnemonicParsing="false" onAction="#btnPastStudentInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnPastStudentInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -135,7 +131,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnPastStudentMakeActive" mnemonicParsing="false" onAction="#btnPastStudentMakeActiveActionPerformed" text="MAKE ACTIVE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnPastStudentMakeActiveActionPerformed" text="MAKE ACTIVE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -162,7 +158,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <items>
-                        <MenuItem fx:id="btnTeacherInsert" mnemonicParsing="false" onAction="#btnTeacherInsertActionPerformed" text="INSERT">
+                        <MenuItem mnemonicParsing="false" onAction="#btnTeacherInsertActionPerformed" text="INSERT">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -171,7 +167,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnTeacherUpdate" mnemonicParsing="false" onAction="#btnTeacherUpdateActionPerformed" text="UPDATE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnTeacherUpdateActionPerformed" text="UPDATE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -180,7 +176,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnTeacherDelete" mnemonicParsing="false" onAction="#btnTeacherDeleteActionPerformed" text="DELETE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnTeacherDeleteActionPerformed" text="DELETE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -190,7 +186,7 @@
                            </graphic>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="btnTeacherClasses" mnemonicParsing="false" onAction="#btnTeacherClassesActionPerformed" text="TEACHER CLASSES">
+                        <MenuItem mnemonicParsing="false" onAction="#btnTeacherClassesActionPerformed" text="TEACHER CLASSES">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -200,7 +196,7 @@
                            </graphic>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="btnTeacherFee" mnemonicParsing="false" onAction="#btnTeacherFeeActionPerformed" text="TEACHER FEE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnTeacherFeeActionPerformed" text="TEACHER FEE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -219,7 +215,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnDeactivateTeacherInsert" mnemonicParsing="false" onAction="#btnDeactivateTeacherInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnDeactivateTeacherInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -228,7 +224,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnDeactivateTeacherMakeActive" mnemonicParsing="false" onAction="#btnDeactivateTeacherMakeActiveActionPerformed" text="MAKE ACTIVE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnDeactivateTeacherMakeActiveActionPerformed" text="MAKE ACTIVE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -256,7 +252,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <items>
-                        <MenuItem fx:id="btnClassInsert" mnemonicParsing="false" onAction="#btnClassInsertActionPerformed" text="INSERT">
+                        <MenuItem mnemonicParsing="false" onAction="#btnClassInsertActionPerformed" text="INSERT">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -265,7 +261,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnClassUpdate" mnemonicParsing="false" onAction="#btnClassUpdateActionPerformed" text="UPDATE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnClassUpdateActionPerformed" text="UPDATE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -274,7 +270,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnClassDelete" mnemonicParsing="false" onAction="#btnClassDeleteActionPerformed" text="DELETE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnClassDeleteActionPerformed" text="DELETE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -293,7 +289,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnCategoryInsert" mnemonicParsing="false" onAction="#btnCategoryInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnCategoryInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -302,7 +298,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnCategoryUpdate" mnemonicParsing="false" onAction="#btnCategoryUpdateActionPerformed" text="UPDATE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnCategoryUpdateActionPerformed" text="UPDATE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -311,7 +307,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnCategoryDelete" mnemonicParsing="false" onAction="#btnCategoryDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnCategoryDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -332,7 +328,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnSubjectInsert" mnemonicParsing="false" onAction="#btnSubjectInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnSubjectInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -341,7 +337,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnSubjectUpdate" mnemonicParsing="false" onAction="#btnSubjectUpdateActionPerformed" text="UPDATE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnSubjectUpdateActionPerformed" text="UPDATE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -350,7 +346,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnSubjectDelete" mnemonicParsing="false" onAction="#btnSubjectDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnSubjectDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -362,7 +358,7 @@
                            </items>
                         </Menu>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="btnExtraClass" mnemonicParsing="false" onAction="#btnExtraClassActionPerformed" text="EXTRA CLASS">
+                        <MenuItem mnemonicParsing="false" onAction="#btnExtraClassActionPerformed" text="EXTRA CLASS">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -372,7 +368,7 @@
                            </graphic>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="btnCancelClass" mnemonicParsing="false" onAction="#btnCancelClassActionPerformed" text="CANCEL CLASS">
+                        <MenuItem mnemonicParsing="false" onAction="#btnCancelClassActionPerformed" text="CANCEL CLASS">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -391,7 +387,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnPastClassInsert" mnemonicParsing="false" onAction="#btnPastClassInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnPastClassInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -400,7 +396,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnPastClassMakeActive" mnemonicParsing="false" onAction="#btnPastClassMakeActiveActionPerformed" text="MAKE ACTIVE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnPastClassMakeActiveActionPerformed" text="MAKE ACTIVE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -428,7 +424,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <items>
-                        <MenuItem fx:id="btnFees" mnemonicParsing="false" onAction="#btnFeesActionPerformed" text="FEES">
+                        <MenuItem mnemonicParsing="false" onAction="#btnFeesActionPerformed" text="FEES">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -438,7 +434,7 @@
                            </graphic>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="btnFeesOverview" mnemonicParsing="false" onAction="#btnFeesOverviewActionPerformed" text="FEES OVERVIEW">
+                        <MenuItem mnemonicParsing="false" onAction="#btnFeesOverviewActionPerformed" text="FEES OVERVIEW">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -457,7 +453,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnAdmissionUpdate" mnemonicParsing="false" onAction="#btnAdmissionUpdateActionPerformed" text="UPDATE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnAdmissionUpdateActionPerformed" text="UPDATE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -466,7 +462,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnAdmissionDelete" mnemonicParsing="false" onAction="#btnAdmissionDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnAdmissionDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -487,7 +483,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnExpenditureInsert" mnemonicParsing="false" onAction="#btnExpenditureInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnExpenditureInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -496,7 +492,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnExpenditureUpdate" mnemonicParsing="false" onAction="#btnExpenditureUpdateActionPerformed" text="UPDATE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnExpenditureUpdateActionPerformed" text="UPDATE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -505,7 +501,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnExpenditureDelete" mnemonicParsing="false" onAction="#btnExpenditureDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnExpenditureDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -526,7 +522,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnTeacherAdvanceInsert" mnemonicParsing="false" onAction="#btnTeacherAdvanceInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnTeacherAdvanceInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -535,7 +531,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnTeacherAdvanceUpdate" mnemonicParsing="false" onAction="#btnTeacherAdvanceUpdateActionPerformed" text="UPDATE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnTeacherAdvanceUpdateActionPerformed" text="UPDATE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -544,7 +540,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnTeacherAdvanceDelete" mnemonicParsing="false" onAction="#btnTeacherAdvanceDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnTeacherAdvanceDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -565,7 +561,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnStaffAdvanceInsert" mnemonicParsing="false" onAction="#btnStaffAdvanceInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnStaffAdvanceInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -574,7 +570,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnStaffAdvanceUpdate" mnemonicParsing="false" onAction="#btnStaffAdvanceUpdateActionPerformed" text="UPDATE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnStaffAdvanceUpdateActionPerformed" text="UPDATE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -583,7 +579,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnStaffAdvanceDelete" mnemonicParsing="false" onAction="#btnStaffAdvanceDeleteActionPerformed" text="DELETE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnStaffAdvanceDeleteActionPerformed" text="DELETE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -626,7 +622,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <items>
-                        <MenuItem fx:id="btnStaffInsert" mnemonicParsing="false" onAction="#btnStaffInsertActionPerformed" text="INSERT">
+                        <MenuItem mnemonicParsing="false" onAction="#btnStaffInsertActionPerformed" text="INSERT">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -635,7 +631,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnStaffUpdate" mnemonicParsing="false" onAction="#btnStaffUpdateActionPerformed" text="UPDATE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnStaffUpdateActionPerformed" text="UPDATE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -644,7 +640,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnStaffDelete" mnemonicParsing="false" onAction="#btnStaffDeleteActionPerformed" text="DELETE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnStaffDeleteActionPerformed" text="DELETE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -654,7 +650,7 @@
                            </graphic>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="btnDailySchedule" mnemonicParsing="false" onAction="#btnDailyScheduleActionPerformed" text="DAILY SCHEDULE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnDailyScheduleActionPerformed" text="DAILY SCHEDULE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -673,7 +669,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnDeactivateStaffInsert" mnemonicParsing="false" onAction="#btnDeactivateStaffInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnDeactivateStaffInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -682,7 +678,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnDeactivateStaffMakeActive" mnemonicParsing="false" onAction="#btnDeactivateStaffMakeActiveActionPerformed" text="MAKE ACTIVE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnDeactivateStaffMakeActiveActionPerformed" text="MAKE ACTIVE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -710,7 +706,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                      <items>
-                        <MenuItem fx:id="btnUserInsert" mnemonicParsing="false" onAction="#btnUserInsertActionPerformed" text="INSERT">
+                        <MenuItem mnemonicParsing="false" onAction="#btnUserInsertActionPerformed" text="INSERT">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -719,7 +715,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnUserUpdate" mnemonicParsing="false" onAction="#btnUserUpdateActionPerformed" text="UPDATE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnUserUpdateActionPerformed" text="UPDATE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -728,7 +724,7 @@
                               </ImageView>
                            </graphic>
                         </MenuItem>
-                        <MenuItem fx:id="btnUserDelete" mnemonicParsing="false" onAction="#btnUserDeleteActionPerformed" text="DELETE">
+                        <MenuItem mnemonicParsing="false" onAction="#btnUserDeleteActionPerformed" text="DELETE">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -747,7 +743,7 @@
                               </ImageView>
                            </graphic>
                            <items>
-                              <MenuItem fx:id="btnDeactivateUserInsert" mnemonicParsing="false" onAction="#btnDeactivateUserInsertActionPerformed" text="INSERT">
+                              <MenuItem mnemonicParsing="false" onAction="#btnDeactivateUserInsertActionPerformed" text="INSERT">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -756,7 +752,7 @@
                                     </ImageView>
                                  </graphic>
                               </MenuItem>
-                              <MenuItem fx:id="btnDeactivateUserMakeActive" mnemonicParsing="false" onAction="#btnDeactivateUserMakeActiveActionPerformed" text="MAKE ACTIVE">
+                              <MenuItem mnemonicParsing="false" onAction="#btnDeactivateUserMakeActiveActionPerformed" text="MAKE ACTIVE">
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -767,7 +763,7 @@
                               </MenuItem>
                            </items>
                         </Menu>
-                        <MenuItem fx:id="btnLoginRecords" mnemonicParsing="false" onAction="#btnLoginRecordsActionPerformed" text="LOGIN RECORDS">
+                        <MenuItem mnemonicParsing="false" onAction="#btnLoginRecordsActionPerformed" text="LOGIN RECORDS">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -859,20 +855,19 @@
                         </Menu>
                      </items>
                   </MenuButton>
-                  <JFXButton fx:id="btnLogout" layoutX="1152.0" layoutY="15.0" onAction="#btnLogoutActionPerformed" style="-fx-background-color: #076aeb;" styleClass="btn-login" text="LOGOUT" AnchorPane.rightAnchor="26.400000000000006">
+                  <JFXButton fx:id="btnLogout" focusTraversable="false" layoutX="1152.0" layoutY="15.0" onAction="#btnLogoutActionPerformed" style="-fx-background-color: #076aeb;" styleClass="btn-login" text="LOGOUT" AnchorPane.rightAnchor="26.400000000000006">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></JFXButton>
                </children>
+               <styleClass>
+                  <String fx:value="mainMenuBar-background" />
+                  <String fx:value="mainDashboardMenuBar-Bottom-border" />
+               </styleClass>
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane fx:id="anchorPaneMainCenter" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <styleClass>
-                  <String fx:value="mainDashboard-background" />
-                  <String fx:value="mainDashboard-border" />
-               </styleClass>
-            </AnchorPane>
+            <AnchorPane fx:id="anchorPaneMainCenter" prefHeight="704.8" prefWidth="1280.0" styleClass="mainDashboard-background" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>
