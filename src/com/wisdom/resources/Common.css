@@ -41,9 +41,84 @@ and open the template in the editor.
     -fx-border-width: 0px 2px 2px 2px;
 }
 
+.mainDashboardMenuBar-Bottom-border {
+    -fx-border-color: #c4c4c4;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
 .mainMenuBar-button {
     -fx-background-radius: 4px;
     -fx-border-radius: 4px;
     -fx-pref-height: 64px;
     -fx-background-color: transparent;
+}
+
+.anchorPaneMainCenter-background {
+    -fx-background-color: #b5cde6;
+}
+
+.anchorPaneMainCenter-border {
+    -fx-border-color: #f7f7f7;
+    -fx-border-width: 24px 2px 2px 2px;
+}
+
+.btn-centerClose {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-pref-height: 24px;
+    -fx-pref-width: 40px;
+    -fx-text-fill: #000000;
+}
+
+.btn-centerClose:hover {
+    -fx-background-color: #e30000;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-centerClose:pressed {
+    -fx-opacity: 0.7;
+}
+
+.textField {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #2e2e2e;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+.btn-save, .btn-delete, .btn-update, .btn-cancel, .btn-search {
+    -fx-pref-height: 48px;
+    -fx-pref-width: 48px;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+}
+
+.btn-save {
+    -fx-background-color: linear-gradient(to left top, #00c200, #00be21, #00ba31, #00b53c, #00b146, #25b451, #38b85c, #47bb67, #61c777, #79d488, #8fe099, #a4edab);
+}
+
+.btn-delete {
+   -fx-background-color: linear-gradient(to left top, #e40037, #e80539, #ed0b3a, #f1103c, #f6143e, #f9344a, #fc4856, #ff5962, #ff787b, #ff9394, #ffadad, #fcc6c6);
+}
+
+.btn-update {
+    -fx-background-color: linear-gradient(to left top, #5c12bc, #610fb8, #660bb5, #6a07b1, #6e04ae, #7925b3, #8439b7, #8e4abc, #a26ec9, #b691d5, #cbb3e0, #e0d6ea);
+
+} 
+
+.btn-cancel {
+    -fx-background-color: linear-gradient(to left top, #e88221, #eb8820, #ed8e1e, #f0951d, #f29b1c, #f2a321, #f1aa28, #f1b22e, #eebc3b, #ecc549, #eace57, #e8d765);
+}
+
+.btn-search {
+    -fx-background-color: linear-gradient(to left top, #0015fe, #002cfa, #003bf5, #1046ef, #2250e8, #405ee7, #556be6, #6778e4, #838de8, #9da3ec, #b5b9ef, #cdcff2);
+}
+
+.btn-save:hover, .btn-delete:hover, .btn-update:hover, .btn-cancel:hover, .btn-search:hover {
+    -fx-opacity: 0.8;
+}
+
+.btn-save:pressed, .btn-delete:pressed, .btn-update:pressed, .btn-cancel:pressed, .btn-search:pressed {
+    -fx-opacity: 0.6;
 }

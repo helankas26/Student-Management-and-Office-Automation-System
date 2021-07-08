@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPaneStaffDeactivate" prefHeight="704.8" prefWidth="1280.0" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.StaffDeactivateController">
+   <styleClass>
+      <String fx:value="anchorPaneMainCenter-background" />
+      <String fx:value="anchorPaneMainCenter-border" />
+   </styleClass>
+   <children>
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/wisdom-title.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTitle" layoutX="28.0" prefHeight="24.0" prefWidth="250.0" text="Deactivate Staff Insert Form" />
+      <AnchorPane layoutX="13.0" layoutY="38.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0">
+         <children>
+            <Pane layoutX="3.0" layoutY="2.0" prefHeight="298.0" prefWidth="210.0" style="-fx-background-color: #998897;">
+               <children>
+                  <ImageView fx:id="imgStaff" fitHeight="200.0" fitWidth="200.0" layoutX="5.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="mainDashboard-border" />
+                  <Label layoutX="5.0" layoutY="6.0" prefHeight="17.0" prefWidth="47.0" text="Picture" />
+                  <JFXButton fx:id="btnImgStaff" focusTraversable="false" layoutX="74.0" layoutY="243.0" onAction="#btnImgStaffActionPerformed" prefHeight="35.0" style="-fx-background-color: #5d74d9; -fx-text-fill: White;" text="BROWSE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Separator layoutX="5.0" layoutY="223.0" prefWidth="200.0" />
+                  <Separator layoutX="5.0" layoutY="22.0" prefWidth="200.0" />
+                  <Separator layoutX="3.0" layoutY="22.0" orientation="VERTICAL" prefHeight="200.0" />
+                  <Separator layoutX="202.0" layoutY="23.0" orientation="VERTICAL" prefHeight="200.0" />
+               </children>
+            </Pane>
+            <Separator layoutX="212.0" layoutY="-2.0" orientation="VERTICAL" prefHeight="302.4" prefWidth="5.0" />
+            <AnchorPane layoutX="216.8000030517578" layoutY="1.0" prefHeight="58.4" style="-fx-background-color: #976fb0;" AnchorPane.leftAnchor="215.79999999999995" AnchorPane.rightAnchor="2.0">
+               <children>
+                  <Label layoutX="354.0" layoutY="10.0" text="Reg No">
+                     <font>
+                        <Font name="System Bold" size="26.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtStaffID" disable="true" layoutX="464.0" layoutY="14.0" prefHeight="25.0" prefWidth="205.0" styleClass="textField" text="ID will be generated">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="217.0" layoutY="61.0" prefHeight="239.0" prefWidth="1034.2" style="-fx-background-color: #f57171;" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="1.599999999999909">
+               <children>
+                  <AnchorPane prefHeight="239.0" prefWidth="550.0" style="-fx-background-color: #f57171;">
+                     <children>
+                        <Label layoutX="20.0" layoutY="20.0" text="Name">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="60.0" text="DoB">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="100.0" text="Sex">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtInitial" layoutX="205.0" layoutY="20.0" prefHeight="26.0" prefWidth="91.0" styleClass="textField" />
+                        <TextField fx:id="txtLastName" layoutX="455.0" layoutY="20.0" styleClass="textField" />
+                        <TextField fx:id="txtFirstName" layoutX="300.0" layoutY="20.0" styleClass="textField" />
+                        <DatePicker fx:id="dateDoB" layoutX="110.0" layoutY="60.0" prefHeight="26.0" prefWidth="127.0" styleClass="textField" />
+                        <JFXRadioButton fx:id="radFemale" layoutX="172.0" layoutY="105.0" text="Female">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Gender" />
+                           </toggleGroup>
+                           <selectedColor>
+                              <Color red="0.061000000685453415" green="0.4007560610771179" blue="0.6100000143051147" />
+                           </selectedColor>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="radMale" layoutX="110.0" layoutY="105.0" text="Male" toggleGroup="$Gender">
+                           <selectedColor>
+                              <Color red="0.061000000685453415" green="0.4007560610771179" blue="0.6100000143051147" />
+                           </selectedColor>
+                        </JFXRadioButton>
+                        <Label layoutX="230.0" text="Initial" textFill="#910000" />
+                        <Label layoutX="490.0" text="Last Name" textFill="#910000" />
+                        <Label layoutX="340.0" text="First Name" textFill="#910000" />
+                        <ComboBox fx:id="cmdTitle" layoutX="110.0" layoutY="20.0" prefHeight="26.0" prefWidth="91.0" styleClass="textField" visibleRowCount="14" />
+                        <Label layoutX="130.0" text="Title" textFill="#910000" />
+                        <Label layoutX="20.0" layoutY="140.0" text="Telephone">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtTelNo" layoutX="110.0" layoutY="140.0" styleClass="textField" />
+                        <Label layoutX="20.0" layoutY="180.0" text="Email">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txtEmail" layoutX="110.0" layoutY="180.0" prefHeight="27.0" prefWidth="247.0" styleClass="textField" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="480.0" prefHeight="239.0" prefWidth="553.0" style="-fx-background-color: #d1c849;" AnchorPane.rightAnchor="-1.1368683772161603E-13">
+                     <children>
+                        <Label layoutX="20.0" layoutY="150.0" text="Joined Date">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dateJoinedDate" layoutX="145.0" layoutY="149.0" prefHeight="26.0" prefWidth="127.0" styleClass="textField" />
+                        <Label layoutX="20.0" layoutY="40.0" text="Address">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="txtAddress" layoutX="145.0" layoutY="20.0" prefHeight="70.0" prefWidth="381.0" styleClass="textField" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="527.0" layoutY="346.0" prefHeight="80.0" prefWidth="460.0" AnchorPane.leftAnchor="527.0" AnchorPane.rightAnchor="291.0">
+         <children>
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-multiply-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="399.0" layoutY="58.0" text="CANCEL">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnSave" focusTraversable="false" mnemonicParsing="false" onAction="#btnSaveActionPerformed" styleClass="btn-save">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-save-80.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="15.0" layoutY="58.0" text="SAVE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView fx:id="table" layoutX="15.0" layoutY="426.0" prefHeight="264.0" prefWidth="1254.0" style="-fx-border-color: #7a7a79;" styleClass="main-background" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="405.0">
+         <columns>
+            <TableColumn fx:id="tblStaffID" prefWidth="150.0" text="StaffID" />
+            <TableColumn fx:id="tblTeacherTitle" prefWidth="100.0" text="Title" />
+            <TableColumn fx:id="tblInitial" prefWidth="84.0" text="Initial" />
+            <TableColumn fx:id="tblFirstName" prefWidth="150.0" text="First Name" />
+            <TableColumn fx:id="tblLastName" minWidth="5.8667144775390625" prefWidth="120.0" text="Last Name" />
+            <TableColumn fx:id="tblDoB" minWidth="6.933349609375" prefWidth="120.0" text="DoB" />
+            <TableColumn fx:id="tblSex" minWidth="0.0" text="Sex" />
+            <TableColumn fx:id="tblTelNo" prefWidth="130.0" text="TelNo" />
+            <TableColumn fx:id="tblAddress" prefWidth="300.0" text="Address" />
+            <TableColumn fx:id="tblEmail" minWidth="0.0" prefWidth="150.0" text="Email" />
+            <TableColumn fx:id="tblJoinedDate" prefWidth="120.0" text="Joined Date" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

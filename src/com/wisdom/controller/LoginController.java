@@ -170,6 +170,7 @@ public class LoginController implements Initializable {
             } else {
                 txtUsername.setText("");
                 changeField(txtUsername, "#de2700", lblUsername, "Incorrect Username");
+                txtPassword.setText("");
                 txtUsername.requestFocus();
             }
         }

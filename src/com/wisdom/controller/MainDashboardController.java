@@ -39,115 +39,7 @@ public class MainDashboardController implements Initializable {
     @FXML
     private BorderPane borderPaneMain;
     @FXML
-    private MenuItem btnStudentInsert;
-    @FXML
-    private MenuItem btnStudentUpdate;
-    @FXML
-    private MenuItem btnStudentDelete;
-    @FXML
-    private MenuItem btnStudentClassesInsert;
-    @FXML
-    private MenuItem btnStudentClassesDelete;
-    @FXML
-    private MenuItem btnFreeCard;
-    @FXML
-    private MenuItem btnAddToAttendance;
-    @FXML
-    private MenuItem btnPastStudentInsert;
-    @FXML
-    private MenuItem btnPastStudentMakeActive;
-    @FXML
-    private MenuItem btnTeacherInsert;
-    @FXML
-    private MenuItem btnTeacherUpdate;
-    @FXML
-    private MenuItem btnTeacherDelete;
-    @FXML
-    private MenuItem btnTeacherClasses;
-    @FXML
-    private MenuItem btnTeacherFee;
-    @FXML
-    private MenuItem btnDeactivateTeacherInsert;
-    @FXML
-    private MenuItem btnDeactivateTeacherMakeActive;
-    @FXML
-    private MenuItem btnClassInsert;
-    @FXML
-    private MenuItem btnClassUpdate;
-    @FXML
-    private MenuItem btnClassDelete;
-    @FXML
-    private MenuItem btnCategoryInsert;
-    @FXML
-    private MenuItem btnCategoryUpdate;
-    @FXML
-    private MenuItem btnCategoryDelete;
-    @FXML
-    private MenuItem btnSubjectInsert;
-    @FXML
-    private MenuItem btnSubjectUpdate;
-    @FXML
-    private MenuItem btnSubjectDelete;
-    @FXML
-    private MenuItem btnExtraClass;
-    @FXML
-    private MenuItem btnCancelClass;
-    @FXML
-    private MenuItem btnPastClassInsert;
-    @FXML
-    private MenuItem btnPastClassMakeActive;
-    @FXML
-    private MenuItem btnFees;
-    @FXML
-    private MenuItem btnFeesOverview;
-    @FXML
-    private MenuItem btnAdmissionUpdate;
-    @FXML
-    private MenuItem btnAdmissionDelete;
-    @FXML
-    private MenuItem btnExpenditureInsert;
-    @FXML
-    private MenuItem btnExpenditureUpdate;
-    @FXML
-    private MenuItem btnExpenditureDelete;
-    @FXML
-    private MenuItem btnTeacherAdvanceInsert;
-    @FXML
-    private MenuItem btnTeacherAdvanceUpdate;
-    @FXML
-    private MenuItem btnTeacherAdvanceDelete;
-    @FXML
-    private MenuItem btnStaffAdvanceInsert;
-    @FXML
-    private MenuItem btnStaffAdvanceUpdate;
-    @FXML
-    private MenuItem btnStaffAdvanceDelete;
-    @FXML
     private Button btnAttendance;
-    @FXML
-    private MenuItem btnStaffInsert;
-    @FXML
-    private MenuItem btnStaffUpdate;
-    @FXML
-    private MenuItem btnStaffDelete;
-    @FXML
-    private MenuItem btnDailySchedule;
-    @FXML
-    private MenuItem btnDeactivateStaffInsert;
-    @FXML
-    private MenuItem btnDeactivateStaffMakeActive;
-    @FXML
-    private MenuItem btnUserInsert;
-    @FXML
-    private MenuItem btnUserUpdate;
-    @FXML
-    private MenuItem btnUserDelete;
-    @FXML
-    private MenuItem btnDeactivateUserInsert;
-    @FXML
-    private MenuItem btnDeactivateUserMakeActive;
-    @FXML
-    private MenuItem btnLoginRecords;
     @FXML
     private MenuItem btnMonthEnd;
     @FXML
@@ -180,7 +72,10 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnStudentInsertActionPerformed(ActionEvent event) {
+    private void btnStudentInsertActionPerformed(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StudentInsert.fxml"));
+        Parent pane = loder.load();
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
