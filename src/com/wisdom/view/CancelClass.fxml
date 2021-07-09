@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPaneDailySchedule" prefHeight="704.8" prefWidth="1280.0" style="-fx-background-color: #300805;" styleClass="anchorPaneMainCenter-border" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.DailyScheduleController">
+<AnchorPane fx:id="anchorPaneCancelClass" prefHeight="704.8" prefWidth="1280.0" style="-fx-background-color: #300805;" styleClass="anchorPaneMainCenter-border" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.CancelClassController">
    <children>
       <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
@@ -21,8 +21,8 @@
             <Image url="@../resources/wisdom-title.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblTitle" layoutX="28.0" prefHeight="24.0" prefWidth="250.0" text="Daily Schedule" />
-      <AnchorPane layoutX="695.0" layoutY="55.0" prefHeight="90.0" prefWidth="550.0" style="-fx-border-color: #7a7a79;" AnchorPane.rightAnchor="50.0">
+      <Label fx:id="lblTitle" layoutX="28.0" prefHeight="24.0" prefWidth="250.0" text="Cancel Scheduled Class" />
+      <AnchorPane layoutX="705.0" layoutY="55.0" prefHeight="90.0" prefWidth="550.0" style="-fx-border-color: #7a7a79;" AnchorPane.leftAnchor="170.0">
          <children>
             <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="80.0" prefWidth="540.0" style="-fx-border-color: #7a7a79; -fx-background-color: #c9b1b1;">
                <children>
@@ -31,7 +31,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <JFXDatePicker fx:id="dateDateForDay" focusTraversable="false" layoutX="91.0" layoutY="30.0" />
+                  <JFXDatePicker fx:id="dateDate" focusTraversable="false" layoutX="91.0" layoutY="30.0" />
                   <Pane layoutX="300.0" layoutY="2.0" prefHeight="76.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btnCancel" focusTraversable="false" layoutX="120.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
@@ -74,23 +74,13 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <TableView fx:id="tblSchedule" layoutX="695.0" layoutY="159.0" onMouseClicked="#tblScheduleOnMouseClicked" prefHeight="280.0" prefWidth="550.0" style="-fx-border-color: #7a7a79;" styleClass="main-background" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0">
+      <TableView fx:id="tblSchedule" layoutX="144.0" layoutY="153.0" onMouseClicked="#tblScheduleOnMouseClicked" prefHeight="280.0" prefWidth="690.0" style="-fx-border-color: #7a7a79; -fx-background-color: #7a7a79;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="140.0">
          <columns>
             <TableColumn fx:id="tblClassID" prefWidth="100.0" text="ClassID" />
             <TableColumn fx:id="tblClass" prefWidth="305.0" text="Class" />
+            <TableColumn fx:id="tblDate" prefWidth="140.0" text="Date" />
             <TableColumn fx:id="tblDay" prefWidth="140.0" text="Day" />
          </columns>
       </TableView>
-      <TableView fx:id="tblScheduleAdd" layoutX="39.0" layoutY="183.0" prefHeight="280.0" prefWidth="550.0" style="-fx-border-color: #4170a7; -fx-background-color: #7a7a79;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="130.0">
-         <columns>
-            <TableColumn fx:id="tblClassIDAdd" prefWidth="150.0" text="ClassID" />
-            <TableColumn fx:id="tblClassAdd" prefWidth="395.0" text="Class" />
-         </columns>
-      </TableView>
-      <Label layoutX="50.0" layoutY="125.0" text="Scheduled" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

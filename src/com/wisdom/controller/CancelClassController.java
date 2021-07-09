@@ -24,16 +24,16 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Helanka
  */
-public class DailyScheduleController implements Initializable {
+public class CancelClassController implements Initializable {
 
     @FXML
-    private AnchorPane anchorPaneDailySchedule;
+    private AnchorPane anchorPaneCancelClass;
     @FXML
     private JFXButton btnCenterClose;
     @FXML
     private Label lblTitle;
     @FXML
-    private JFXDatePicker dateDateForDay;
+    private JFXDatePicker dateDate;
     @FXML
     private Button btnCancel;
     @FXML
@@ -45,13 +45,9 @@ public class DailyScheduleController implements Initializable {
     @FXML
     private TableColumn<?, ?> tblClass;
     @FXML
+    private TableColumn<?, ?> tblDate;
+    @FXML
     private TableColumn<?, ?> tblDay;
-    @FXML
-    private TableView<?> tblScheduleAdd;
-    @FXML
-    private TableColumn<?, ?> tblClassIDAdd;
-    @FXML
-    private TableColumn<?, ?> tblClassAdd;
 
     /**
      * Initializes the controller class.

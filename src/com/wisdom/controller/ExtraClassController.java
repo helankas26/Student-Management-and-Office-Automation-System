@@ -6,13 +6,13 @@
 package com.wisdom.controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -24,20 +24,20 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Helanka
  */
-public class DailyScheduleController implements Initializable {
+public class ExtraClassController implements Initializable {
 
     @FXML
-    private AnchorPane anchorPaneDailySchedule;
+    private AnchorPane anchorPaneExtraClass;
     @FXML
     private JFXButton btnCenterClose;
     @FXML
     private Label lblTitle;
     @FXML
-    private JFXDatePicker dateDateForDay;
-    @FXML
     private Button btnCancel;
     @FXML
     private Button btnSearch;
+    @FXML
+    private ComboBox<?> cmbDay;
     @FXML
     private TableView<?> tblSchedule;
     @FXML
@@ -46,12 +46,6 @@ public class DailyScheduleController implements Initializable {
     private TableColumn<?, ?> tblClass;
     @FXML
     private TableColumn<?, ?> tblDay;
-    @FXML
-    private TableView<?> tblScheduleAdd;
-    @FXML
-    private TableColumn<?, ?> tblClassIDAdd;
-    @FXML
-    private TableColumn<?, ?> tblClassAdd;
 
     /**
      * Initializes the controller class.

@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
@@ -24,34 +25,34 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author Helanka
  */
-public class DailyScheduleController implements Initializable {
+public class LoginRecordsController implements Initializable {
 
     @FXML
-    private AnchorPane anchorPaneDailySchedule;
+    private AnchorPane anchorPaneLoginRecords;
     @FXML
     private JFXButton btnCenterClose;
     @FXML
     private Label lblTitle;
     @FXML
-    private JFXDatePicker dateDateForDay;
+    private Button btnSearchByID;
+    @FXML
+    private TextField txtLoginID;
+    @FXML
+    private Button btnSearchByDate;
+    @FXML
+    private JFXDatePicker dateLoginDate;
+    @FXML
+    private TableView<?> tblLoginRecords;
+    @FXML
+    private TableColumn<?, ?> tblLoginID;
+    @FXML
+    private TableColumn<?, ?> tblUserame;
+    @FXML
+    private TableColumn<?, ?> tblDate;
+    @FXML
+    private TableColumn<?, ?> tblTime;
     @FXML
     private Button btnCancel;
-    @FXML
-    private Button btnSearch;
-    @FXML
-    private TableView<?> tblSchedule;
-    @FXML
-    private TableColumn<?, ?> tblClassID;
-    @FXML
-    private TableColumn<?, ?> tblClass;
-    @FXML
-    private TableColumn<?, ?> tblDay;
-    @FXML
-    private TableView<?> tblScheduleAdd;
-    @FXML
-    private TableColumn<?, ?> tblClassIDAdd;
-    @FXML
-    private TableColumn<?, ?> tblClassAdd;
 
     /**
      * Initializes the controller class.
@@ -66,15 +67,19 @@ public class DailyScheduleController implements Initializable {
     }
 
     @FXML
+    private void btnSearchByIDActionPerformed(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSearchByDateActionPerformed(ActionEvent event) {
+    }
+
+    @FXML
+    private void tblLoginRecordsOnMouseClicked(MouseEvent event) {
+    }
+
+    @FXML
     private void btnCancelActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSearchActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void tblScheduleOnMouseClicked(MouseEvent event) {
     }
     
 }
