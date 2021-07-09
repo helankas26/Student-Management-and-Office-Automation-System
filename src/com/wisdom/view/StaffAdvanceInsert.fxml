@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPaneStaffAdvanceInsert" prefHeight="704.8" prefWidth="1280.0" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.StaffAdvanceInsertController">
+   <styleClass>
+      <String fx:value="anchorPaneMainCenter-background" />
+      <String fx:value="anchorPaneMainCenter-border" />
+   </styleClass>
+   <children>
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/wisdom-title.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTitle" layoutX="28.0" prefHeight="24.0" prefWidth="250.0" text="Staff Advance Insert" />
+      <AnchorPane layoutX="100.0" layoutY="50.0" prefHeight="300.0" prefWidth="510.0" style="-fx-border-color: #7a7a79;">
+         <children>
+            <Pane layoutX="5.0" layoutY="5.0" prefHeight="200.0" prefWidth="500.0" style="-fx-border-color: #7a7a79;">
+               <children>
+                  <Label layoutX="30.0" layoutY="15.0" text="Staff">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="145.0" text="Date">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateAdvanceDate" layoutX="130.0" layoutY="144.0" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="60.0" text="Description">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbStaff" layoutX="130.0" layoutY="15.0" prefWidth="250.0" styleClass="textField" />
+                  <TextArea fx:id="txtDescription" layoutX="130.0" layoutY="59.0" prefHeight="63.0" prefWidth="250.0" styleClass="textField" wrapText="true" />
+               </children>
+            </Pane>
+            <Label layoutX="35.0" layoutY="230.0" text="Amount">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAmonut" layoutX="135.0" layoutY="229.0" prefHeight="27.0" prefWidth="170.0" styleClass="textField" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblAdvance" layoutX="770.0" layoutY="70.0" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: #7a7a79;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+         <columns>
+            <TableColumn fx:id="tblAdvanceID" prefWidth="90.0" text="AdvanceID" />
+            <TableColumn fx:id="tblStaff" prefWidth="160.0" text="Staff" />
+            <TableColumn fx:id="tblStaffID" prefWidth="100.0" text="StaffID" />
+            <TableColumn fx:id="tblDescription" prefWidth="150.0" text="Description" />
+            <TableColumn fx:id="tblAmount" prefWidth="100.0" text="Amount" />
+            <TableColumn fx:id="tblAdvanceDate" prefWidth="100.0" text="Date" />
+            <TableColumn fx:id="tblStaffHandle" prefWidth="100.0" text="StaffManage" />
+         </columns>
+      </TableView>
+      <Pane layoutX="140.0" layoutY="380.0" prefHeight="80.0" prefWidth="460.0">
+         <children>
+            <Button fx:id="btnSave" focusTraversable="false" mnemonicParsing="false" onAction="#btnSaveActionPerformed" styleClass="btn-save">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-save-80.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-multiply-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="15.0" layoutY="58.0" text="SAVE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="399.0" layoutY="58.0" text="CANCEL">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

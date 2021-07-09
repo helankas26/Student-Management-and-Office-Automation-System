@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPaneClassUpdate" prefHeight="704.8" prefWidth="1280.0" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.ClassUpdateController">
+   <styleClass>
+      <String fx:value="anchorPaneMainCenter-background" />
+      <String fx:value="anchorPaneMainCenter-border" />
+   </styleClass>
+   <children>
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/wisdom-title.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTitle" layoutX="28.0" prefHeight="24.0" prefWidth="250.0" text="Class Update Form" />
+      <AnchorPane layoutX="25.0" layoutY="28.0" prefHeight="480.0" prefWidth="600.0" style="-fx-border-color: #7a7a79;">
+         <children>
+            <AnchorPane layoutX="5.0" layoutY="5.0" prefHeight="85.0" prefWidth="590.0" style="-fx-border-color: #7a7a79; -fx-background-color: #89bf75;">
+               <children>
+                  <Label layoutX="30.0" layoutY="31.0" text="Class ID">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnSearch" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchActionPerformed" styleClass="btn-search">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-search-48.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="330.0" layoutY="62.0" text="SEARCH">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtClassID" layoutX="130.0" layoutY="31.0" prefHeight="27.0" prefWidth="170.0" styleClass="textField">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <JFXButton fx:id="btnMakePastClass" focusTraversable="false" layoutX="390.0" layoutY="5.0" onAction="#btnMakePastClassActionPerformed" prefHeight="44.0" prefWidth="200.0" style="-fx-border-color: #f7f7f7;" text="Make Past Class" textAlignment="RIGHT">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/icons8-shutdown-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <Pane layoutX="5.0" layoutY="95.0" prefHeight="380.0" prefWidth="590.0" style="-fx-border-color: #7a7a79;">
+               <children>
+                  <Label layoutX="30.0" layoutY="15.0" text="Category">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbCategory" layoutX="130.0" layoutY="15.0" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="60.0" text="Subject">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbSubject" layoutX="130.0" layoutY="60.0" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="105.0" text="Day">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbDay" layoutX="130.0" layoutY="105.0" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="150.0" text="Time">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTimePicker fx:id="timeStart" defaultColor="#787878" layoutX="130.0" layoutY="150.0" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px; -fx-border-radius: 0px;" />
+                  <Label layoutX="227.0" layoutY="145.0" prefHeight="28.0" prefWidth="15.0" text=":">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <JFXTimePicker fx:id="timeEnd" defaultColor="#787878" layoutX="245.0" layoutY="150.0" onAction="#timeEndActionPerformed" prefWidth="90.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0px; -fx-border-radius: 0px;" />
+                  <Label layoutX="30.0" layoutY="195.0" text="Name">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtName" disable="true" layoutX="130.0" layoutY="195.0" prefHeight="27.2" prefWidth="300.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="240.0" text="Teacher">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbTeacher" layoutX="130.0" layoutY="240.0" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="285.0" text="Room">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbRoom" layoutX="130.0" layoutY="285.0" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="330.0" text="Class Fee">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtClassFee" layoutX="130.0" layoutY="330.0" prefHeight="27.2" prefWidth="170.0" styleClass="textField" />
+                  <JFXCheckBox fx:id="chkEditName" checkedColor="#0c5f17" layoutX="450.0" layoutY="198.0" onAction="#chkEditNameActionPerformed" text="Edit Name" unCheckedColor="BLACK">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXCheckBox>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblClass" layoutX="770.0" layoutY="28.0" onMouseClicked="#tblClassOnMouseClicked" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: #7a7a79;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="5.0">
+         <columns>
+            <TableColumn fx:id="tblClassID" prefWidth="90.0" text="ClassID" />
+            <TableColumn fx:id="tblClassName" prefWidth="250.0" text="ClassName" />
+            <TableColumn fx:id="tblDay" prefWidth="100.0" text="Day" />
+            <TableColumn fx:id="tblStartTime" text="Start Time" />
+            <TableColumn fx:id="tblEndTime" text="End Time" />
+            <TableColumn fx:id="tblRoom" prefWidth="100.0" text="Room" />
+            <TableColumn fx:id="tblClassFee" prefWidth="100.0" text="ClassFee" />
+            <TableColumn fx:id="tblSubjectID" prefWidth="100.0" text="SubjectID" />
+            <TableColumn fx:id="tblTeacherID" prefWidth="100.0" text="TeacherID" />
+            <TableColumn fx:id="tblCategoryID" prefWidth="100.0" text="CategoryID" />
+         </columns>
+      </TableView>
+      <Pane layoutX="145.0" layoutY="520.0" prefHeight="80.0" prefWidth="460.0">
+         <children>
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-multiply-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="399.0" layoutY="58.0" text="CANCEL">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnEdit" focusTraversable="false" layoutX="115.0" mnemonicParsing="false" onAction="#btnEditActionPerformed" styleClass="btn-update">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-create-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="130.0" layoutY="58.0" text="EDIT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

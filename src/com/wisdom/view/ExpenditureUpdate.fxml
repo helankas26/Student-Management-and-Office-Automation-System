@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPaneExpenditureUpdate" prefHeight="704.8" prefWidth="1280.0" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.ExpenditureUpdateController">
+   <styleClass>
+      <String fx:value="anchorPaneMainCenter-background" />
+      <String fx:value="anchorPaneMainCenter-border" />
+   </styleClass>
+   <children>
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/wisdom-title.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblTitle" layoutX="28.0" prefHeight="24.0" prefWidth="250.0" text="Expenditure Update" />
+      <AnchorPane layoutX="100.0" layoutY="50.0" prefHeight="235.0" prefWidth="510.0" style="-fx-border-color: #7a7a79;">
+         <children>
+            <Pane layoutX="5.0" layoutY="5.0" prefHeight="150.0" prefWidth="500.0" style="-fx-border-color: #7a7a79;">
+               <children>
+                  <Label layoutX="30.0" layoutY="70.0" text="Expense ID">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtExpenseID" layoutX="130.0" layoutY="69.0" prefHeight="27.0" prefWidth="170.0" styleClass="textField">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="30.0" layoutY="30.0" text="Date">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateExpenseDate" layoutX="130.0" layoutY="29.0" onAction="#dateExpenseDateActionPerformed" prefWidth="170.0" styleClass="textField" />
+                  <Label layoutX="30.0" layoutY="110.0" text="Expense">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtExpense" layoutX="130.0" layoutY="109.0" prefHeight="27.0" prefWidth="170.0" styleClass="textField">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="14.0" layoutY="8.0" text="Search by Date" textFill="#d90b0b">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="35.0" layoutY="180.0" text="Amount">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAmonut" layoutX="135.0" layoutY="180.0" prefHeight="27.0" prefWidth="170.0" styleClass="textField" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblExpense" layoutX="770.0" layoutY="70.0" onMouseClicked="#tblExpenseOnMouseClicked" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: #7a7a79;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="25.0">
+         <columns>
+            <TableColumn fx:id="tblExpenseID" prefWidth="125.0" text="ExpenseID" />
+            <TableColumn fx:id="tblExpense" prefWidth="280.0" text="Expense" />
+            <TableColumn fx:id="tblAmount" prefWidth="100.0" text="Amount" />
+            <TableColumn fx:id="tblDate" prefWidth="125.0" text="Date" />
+            <TableColumn fx:id="tblStaff" prefWidth="120.0" text="Staff" />
+         </columns>
+      </TableView>
+      <Pane layoutX="130.0" layoutY="300.0" prefHeight="80.0" prefWidth="460.0">
+         <children>
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-multiply-60.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="399.0" layoutY="58.0" text="CANCEL">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnEdit" focusTraversable="false" layoutX="115.0" mnemonicParsing="false" onAction="#btnEditActionPerformed" styleClass="btn-update">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8-create-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label layoutX="130.0" layoutY="58.0" text="EDIT">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
