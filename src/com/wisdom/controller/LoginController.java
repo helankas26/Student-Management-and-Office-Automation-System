@@ -111,8 +111,8 @@ public class LoginController implements Initializable {
                                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                                 alert.initModality(Modality.APPLICATION_MODAL);
                                 alert.initOwner(primaryStage);
-                                alert.setTitle("Exit Program");
-                                alert.setHeaderText("Confirm Exit");
+                                alert.setTitle("Logout");
+                                alert.setHeaderText(null);
                                 alert.setContentText("Do you really want to logout?");
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if (result.isPresent() && result.get() == ButtonType.OK) {
