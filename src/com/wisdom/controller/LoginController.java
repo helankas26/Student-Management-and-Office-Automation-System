@@ -152,7 +152,7 @@ public class LoginController implements Initializable {
                         alert.initOwner(stage);
                         alert.setTitle("Error");
                         alert.setHeaderText("Access denied");
-                        alert.setContentText("you are not authorized to access the system.");
+                        alert.setContentText("You are not authorized to access the system.");
                         Optional<ButtonType> result = alert.showAndWait();
                         if (result.isPresent() && result.get() == ButtonType.OK) {
                             txtUsername.setText("");
