@@ -72,7 +72,7 @@ public class LoginController implements Initializable {
     }
     
     @FXML
-    private void btnLoginActionPerformed(ActionEvent event) throws IOException {
+    private void btnLoginOnAction(ActionEvent event) throws IOException {
         if (isFieldEmpty()) {
             login = new Login();
             login.setUserName(txtUsername.getText().trim());
