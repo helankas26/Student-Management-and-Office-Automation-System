@@ -20,8 +20,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -52,6 +55,62 @@ public class MainDashboardController implements Initializable {
     private JFXButton btnLogout;
     @FXML
     private AnchorPane anchorPaneMainCenter;
+    @FXML
+    private MenuButton btnUser;
+    @FXML
+    private MenuButton btnStaff;
+    @FXML
+    private MenuItem btnDailySchedule;
+    @FXML
+    private MenuButton btnProcess;
+    @FXML
+    private MenuButton btnStudent;
+    @FXML
+    private Menu btnStudentClasses;
+    @FXML
+    private MenuItem btnStudentClassesInsert;
+    @FXML
+    private MenuItem btnStudentClassesDelete;
+    @FXML
+    private MenuItem btnFreeCard;
+    @FXML
+    private MenuItem btnAddToAttendance;
+    @FXML
+    private MenuButton btnTeacher;
+    @FXML
+    private MenuItem btnTeacherFee;
+    @FXML
+    private MenuButton btnClass;
+    @FXML
+    private MenuItem btnClassUpdate;
+    @FXML
+    private MenuItem btnClassDelete;
+    @FXML
+    private MenuItem btnCancelClass;
+    @FXML
+    private Menu btnPastClass;
+    @FXML
+    private MenuButton btnFinancial;
+    @FXML
+    private Menu btnAdmission;
+    @FXML
+    private Menu btnExpenditure;
+    @FXML
+    private MenuItem btnExpenditureUpdate;
+    @FXML
+    private MenuItem btnExpenditureDelete;
+    @FXML
+    private Menu btnTeacherAdvance;
+    @FXML
+    private MenuItem btnTeacherAdvanceUpdate;
+    @FXML
+    private MenuItem btnTeacherAdvanceDelete;
+    @FXML
+    private Menu btnStaffAdvance;
+    @FXML
+    private MenuItem btnStaffAdvanceUpdate;
+    @FXML
+    private MenuItem btnStaffAdvanceDelete;
     
     private Login loginUser;
     
@@ -71,260 +130,502 @@ public class MainDashboardController implements Initializable {
         // TODO
     }
 
+     @FXML
+    private void btnStudentOnMousePressed(MouseEvent event) {
+        switch (loginUser.getPrivilege()) {
+            case "Administrator":
+                if (btnStudent.isShowing()) {
+                    btnStudent.hide();
+                } else {
+                    btnStudent.show();
+                }   
+                break;
+                
+            case "Standard":
+                if (btnStudent.isShowing()) {
+                    btnStudent.hide();
+                } else {
+                    btnStudentClasses.getItems().remove(btnStudentClassesDelete);
+                    btnStudentClasses.getItems().remove(btnFreeCard);
+                    btnStudent.show();
+                }   
+                break;
+                
+            case "Guess":
+                if (btnStudent.isShowing()) {
+                    btnStudent.hide();
+                } else {
+                    btnStudent.getItems().clear();
+                    btnStudent.getItems().add(btnStudentClasses);
+                    btnStudentClasses.getItems().clear();
+                    btnStudentClasses.getItems().add(btnStudentClassesInsert);
+                    btnStudentClasses.getItems().add(btnAddToAttendance);
+                    btnStudent.show();
+                }   
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
     @FXML
-    private void btnStudentInsertActionPerformed(ActionEvent event) throws IOException {
+    private void btnStudentInsertOnAction(ActionEvent event) throws IOException {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StudentInsert.fxml"));
         Parent pane = loder.load();
         borderPaneMain.setCenter(pane);
     }
 
     @FXML
-    private void btnStudentUpdateActionPerformed(ActionEvent event) {
+    private void btnStudentUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStudentDeleteActionPerformed(ActionEvent event) {
+    private void btnStudentDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStudentClassesInsertActionPerformed(ActionEvent event) {
+    private void btnStudentClassesInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStudentClassesDeleteActionPerformed(ActionEvent event) {
+    private void btnStudentClassesDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnFreeCardActionPerformed(ActionEvent event) {
+    private void btnFreeCardOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnAddToAttendanceActionPerformed(ActionEvent event) {
+    private void btnAddToAttendanceOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnPastStudentInsertActionPerformed(ActionEvent event) {
+    private void btnPastStudentInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnPastStudentMakeActiveActionPerformed(ActionEvent event) {
+    private void btnPastStudentMakeActiveOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherInsertActionPerformed(ActionEvent event) {
+    private void btnTeacherOnMousePressed(MouseEvent event) {
+        switch (loginUser.getPrivilege()) {
+            case "Administrator":
+                if (btnTeacher.isShowing()) {
+                    btnTeacher.hide();
+                } else {
+                    btnTeacher.show();
+                }   
+                break;
+                
+            case "Standard":
+                if (btnTeacher.isShowing()) {
+                    btnTeacher.hide();
+                } else {
+                    btnTeacher.getItems().remove(btnTeacherFee);
+                    btnTeacher.show();
+                }   
+                break;
+                
+            case "Guess":
+                btnTeacher.hide();
+                Stage primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.initOwner(primaryStage);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("You are not authorized to access");
+                alert.showAndWait();  
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    @FXML
+    private void btnTeacherInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherUpdateActionPerformed(ActionEvent event) {
+    private void btnTeacherUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherDeleteActionPerformed(ActionEvent event) {
+    private void btnTeacherDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherClassesActionPerformed(ActionEvent event) {
+    private void btnTeacherClassesOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherFeeActionPerformed(ActionEvent event) {
+    private void btnTeacherFeeOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeactivateTeacherInsertActionPerformed(ActionEvent event) {
+    private void btnDeactivateTeacherInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeactivateTeacherMakeActiveActionPerformed(ActionEvent event) {
+    private void btnDeactivateTeacherMakeActiveOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnClassInsertActionPerformed(ActionEvent event) {
+    private void btnClassOnMousePressed(MouseEvent event) {
+        switch (loginUser.getPrivilege()) {
+            case "Administrator":
+                if (btnClass.isShowing()) {
+                    btnClass.hide();
+                } else {
+                    btnClass.show();
+                }   
+                break;
+                
+            case "Standard":
+                if (btnClass.isShowing()) {
+                    btnClass.hide();
+                } else {
+                    btnClass.getItems().remove(btnClassUpdate);
+                    btnClass.getItems().remove(btnClassDelete);
+                    btnClass.getItems().remove(btnCancelClass);
+                    btnClass.getItems().remove(btnPastClass);
+                    btnClass.show();
+                }   
+                break;
+                
+            case "Guess":
+                btnClass.hide();
+                Stage primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.initOwner(primaryStage);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("You are not authorized to access");
+                alert.showAndWait();  
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    @FXML
+    private void btnClassInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnClassUpdateActionPerformed(ActionEvent event) {
+    private void btnClassUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnClassDeleteActionPerformed(ActionEvent event) {
+    private void btnClassDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCategoryInsertActionPerformed(ActionEvent event) {
+    private void btnCategoryInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCategoryUpdateActionPerformed(ActionEvent event) {
+    private void btnCategoryUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCategoryDeleteActionPerformed(ActionEvent event) {
+    private void btnCategoryDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnSubjectInsertActionPerformed(ActionEvent event) {
+    private void btnSubjectInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnSubjectUpdateActionPerformed(ActionEvent event) {
+    private void btnSubjectUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnSubjectDeleteActionPerformed(ActionEvent event) {
+    private void btnSubjectDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnExtraClassActionPerformed(ActionEvent event) {
+    private void btnExtraClassOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnCancelClassActionPerformed(ActionEvent event) {
+    private void btnCancelClassOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnPastClassInsertActionPerformed(ActionEvent event) {
+    private void btnPastClassInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnPastClassMakeActiveActionPerformed(ActionEvent event) {
+    private void btnPastClassMakeActiveOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnFeesActionPerformed(ActionEvent event) {
+    private void btnFinancialOnMousePressed(MouseEvent event) {
+        switch (loginUser.getPrivilege()) {
+            case "Administrator":
+                if (btnFinancial.isShowing()) {
+                    btnFinancial.hide();
+                } else {
+                    btnFinancial.show();
+                }   
+                break;
+                
+            case "Standard":
+                if (btnFinancial.isShowing()) {
+                    btnFinancial.hide();
+                } else {
+                    btnFinancial.getItems().remove(btnAdmission);
+                    btnExpenditure.getItems().remove(btnExpenditureUpdate);
+                    btnExpenditure.getItems().remove(btnExpenditureDelete);
+                    btnTeacherAdvance.getItems().remove(btnTeacherAdvanceUpdate);
+                    btnTeacherAdvance.getItems().remove(btnTeacherAdvanceDelete);
+                    btnStaffAdvance.getItems().remove(btnStaffAdvanceUpdate);
+                    btnStaffAdvance.getItems().remove(btnStaffAdvanceDelete);
+                    btnFinancial.show();
+                }   
+                break;
+                
+            case "Guess":
+                btnFinancial.hide();
+                Stage primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.initOwner(primaryStage);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("You are not authorized to access");
+                alert.showAndWait();  
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    @FXML
+    private void btnFeesOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnFeesOverviewActionPerformed(ActionEvent event) {
+    private void btnFeesOverviewOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnAdmissionUpdateActionPerformed(ActionEvent event) {
+    private void btnAdmissionUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnAdmissionDeleteActionPerformed(ActionEvent event) {
+    private void btnAdmissionDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnExpenditureInsertActionPerformed(ActionEvent event) {
+    private void btnExpenditureInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnExpenditureUpdateActionPerformed(ActionEvent event) {
+    private void btnExpenditureUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnExpenditureDeleteActionPerformed(ActionEvent event) {
+    private void btnExpenditureDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherAdvanceInsertActionPerformed(ActionEvent event) {
+    private void btnTeacherAdvanceInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherAdvanceUpdateActionPerformed(ActionEvent event) {
+    private void btnTeacherAdvanceUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnTeacherAdvanceDeleteActionPerformed(ActionEvent event) {
+    private void btnTeacherAdvanceDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStaffAdvanceInsertActionPerformed(ActionEvent event) {
+    private void btnStaffAdvanceInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStaffAdvanceUpdateActionPerformed(ActionEvent event) {
+    private void btnStaffAdvanceUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStaffAdvanceDeleteActionPerformed(ActionEvent event) {
+    private void btnStaffAdvanceDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnAttendanceActionPerformed(ActionEvent event) {
+    private void btnAttendanceOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStaffInsertActionPerformed(ActionEvent event) {
+    private void btnStaffOnMousePressed(MouseEvent event) {
+        switch (loginUser.getPrivilege()) {
+            case "Administrator":
+                if (btnStaff.isShowing()) {
+                    btnStaff.hide();
+                } else {
+                    btnStaff.show();
+                }   
+                break;
+                
+            case "Standard":
+                if (btnStaff.isShowing()) {
+                    btnStaff.hide();
+                } else {
+                    btnStaff.getItems().clear();
+                    btnStaff.getItems().add(btnDailySchedule);
+                    btnStaff.show();
+                }   
+                break;
+                
+            case "Guess":
+                if (btnStaff.isShowing()) {
+                    btnStaff.hide();
+                } else {
+                    btnStaff.getItems().clear();
+                    btnStaff.getItems().add(btnDailySchedule);
+                    btnStaff.show();
+                }   
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+    @FXML
+    private void btnStaffInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStaffUpdateActionPerformed(ActionEvent event) {
+    private void btnStaffUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnStaffDeleteActionPerformed(ActionEvent event) {
+    private void btnStaffDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDailyScheduleActionPerformed(ActionEvent event) {
+    private void btnDailyScheduleOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeactivateStaffInsertActionPerformed(ActionEvent event) {
+    private void btnDeactivateStaffInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeactivateStaffMakeActiveActionPerformed(ActionEvent event) {
+    private void btnDeactivateStaffMakeActiveOnAction(ActionEvent event) {
+    }
+    
+    @FXML
+    private void btnUserOnMousePressed(MouseEvent event) {
+        if (loginUser.getPrivilege().equals("Administrator")) {
+            if (btnUser.isShowing()) {
+                btnUser.hide();
+            } else {
+                btnUser.show();
+            }
+        } else {
+            btnUser.hide();
+            Stage primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
+        
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(primaryStage);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("You are not authorized to access");
+            alert.showAndWait();
+        }
     }
 
     @FXML
-    private void btnUserInsertActionPerformed(ActionEvent event) {
+    private void btnUserInsertOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnUserUpdateActionPerformed(ActionEvent event) {
+    private void btnUserUpdateOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnUserDeleteActionPerformed(ActionEvent event) {
+    private void btnUserDeleteOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeactivateUserInsertActionPerformed(ActionEvent event) {
+    private void btnDeactivateUserOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnDeactivateUserMakeActiveActionPerformed(ActionEvent event) {
+    private void btnDeactivateUserMakeActiveOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnLoginRecordsActionPerformed(ActionEvent event) {
+    private void btnLoginRecordsOnAction(ActionEvent event) {
+    }
+
+     @FXML
+    private void btnProcessOnMousePressed(MouseEvent event) {
+        if (loginUser.getPrivilege().equals("Administrator")) {
+            if (btnProcess.isShowing()) {
+                btnProcess.hide();
+            } else {
+                btnProcess.show();
+            }
+        } else {
+            btnProcess.hide();
+            Stage primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
+        
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.initOwner(primaryStage);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("You are not authorized to access");
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void btnMonthEndOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnMonthEndActionPerformed(ActionEvent event) {
+    private void btnYearEndOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnYearEndActionPerformed(ActionEvent event) {
+    private void btnBatchEndOLOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnBatchEndOLActionPerformed(ActionEvent event) {
+    private void btnBatchEndALOnAction(ActionEvent event) {
     }
 
     @FXML
-    private void btnBatchEndALActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnLogoutActionPerformed(ActionEvent event) throws IOException {
+    private void btnLogoutOnAction(ActionEvent event) throws IOException {
         Stage primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
-
+        
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(primaryStage);
-        alert.setTitle("Exit Program");
-        alert.setHeaderText("Confirm Exit");
+        alert.setTitle("Logout");
+        alert.setHeaderText(null);
         alert.setContentText("Do you really want to logout?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             primaryStage = (Stage) anchorPaneMain.getScene().getWindow();
             primaryStage.close();
-
+            
             Stage stage = new Stage();
             Parent root = FXMLLoader.load(getClass().getResource("/com/wisdom/view/Login.fxml"));
             Scene scene = new Scene(root);
@@ -333,10 +634,10 @@ public class MainDashboardController implements Initializable {
             loginUser = null;
             stage.setScene(scene);
             stage.show();
-
+            
         } else {
             event.consume();
         }
     }
-   
+
 }
