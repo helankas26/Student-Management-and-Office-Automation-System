@@ -54,8 +54,8 @@ public class LoginController implements Initializable {
     @FXML
     private AnchorPane anchorPaneMain;
     
-    Login login = null;
-    LoginDAO loginDAO = new LoginDAO();
+    private Login login = null;
+    private LoginDAO loginDAO = new LoginDAO();
     
     /**
      * Initializes the controller class.
