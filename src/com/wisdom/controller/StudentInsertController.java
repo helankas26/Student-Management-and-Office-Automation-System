@@ -382,18 +382,18 @@ public class StudentInsertController implements Initializable {
     
     private void clearFields() {
         txtInitial.setText("");
-        txtFirstName.setText(null);
+        txtFirstName.setText("");
         txtLastName.setText("");
         cmbGrade.setValue(null);
         dateDoB.setValue(null);
-        txtSchool.setText(null);
+        txtSchool.setText("");
         Gender.selectToggle(radMale);
         Medium.selectToggle(radSinhala);
-        txtEmail.setText(null);
+        txtEmail.setText("");
         cmbTitle.setValue(null);
-        txtParentName.setText(null);
-        txtTelNo.setText(null);
-        txaAddress.setText(null);
+        txtParentName.setText("");
+        txtTelNo.setText("");
+        txaAddress.setText("");
         dateJoinedDate.setValue(LocalDate.now());
         txtAdmissionFee.setText("700.00");
         txtAdmissionFee.setDisable(true);
