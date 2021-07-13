@@ -21,7 +21,7 @@
       <String fx:value="anchorPaneMainCenter-border" />
    </styleClass>
    <children>
-      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseOnAction" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/wisdom-title.png" />
@@ -47,8 +47,8 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cmbCategory" layoutX="122.0" layoutY="50.0" onAction="#cmbCategoryActionPerformed" prefWidth="150.0" styleClass="textField" />
-                  <ComboBox fx:id="cmbSubject" layoutX="122.0" layoutY="100.0" onAction="#cmbSubjectActionPerformed" prefWidth="150.0" styleClass="textField" />
+                  <ComboBox fx:id="cmbCategory" layoutX="122.0" layoutY="50.0" onAction="#cmbCategoryOnAction" prefWidth="150.0" styleClass="textField" />
+                  <ComboBox fx:id="cmbSubject" layoutX="122.0" layoutY="100.0" onAction="#cmbSubjectOnAction" prefWidth="150.0" styleClass="textField" />
                </children>
             </Pane>
             <Pane layoutX="5.0" layoutY="160.0" prefHeight="135.0" prefWidth="440.0" style="-fx-border-color: #7a7a79;">
@@ -61,7 +61,7 @@
                               <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
-                        <Button fx:id="btnSearch" focusTraversable="false" layoutX="278.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnSearchActionPerformed" styleClass="btn-search">
+                        <Button fx:id="btnSearch" focusTraversable="false" layoutX="278.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnSearchOnAction" styleClass="btn-search">
                            <graphic>
                               <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -88,14 +88,14 @@
         <columns>
             <TableColumn fx:id="tblStudentName" prefWidth="300.0" text="Student Name" />
           <TableColumn fx:id="tblStudentID" prefWidth="180.0" text="Student ID" />
-            <TableColumn fx:id="tblRegisteredClass" prefWidth="420.0" text="Class" />
+            <TableColumn fx:id="tblRegisteredClassName" prefWidth="420.0" text="Class" />
           <TableColumn fx:id="tblRegisteredClassID" prefWidth="180.0" text="Class ID" />
             <TableColumn fx:id="tblRegisteredDate" prefWidth="150.0" text="Registered Date" />
         </columns>
       </TableView>
       <Pane layoutX="486.0" layoutY="346.0" prefHeight="80.0" prefWidth="374.0" AnchorPane.leftAnchor="486.0" AnchorPane.rightAnchor="417.6">
          <children>
-            <Button fx:id="btnSave" focusTraversable="false" mnemonicParsing="false" onAction="#btnSaveActionPerformed" styleClass="btn-save">
+            <Button fx:id="btnSave" focusTraversable="false" mnemonicParsing="false" onAction="#btnSaveOnAction" styleClass="btn-save">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -107,7 +107,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCancel" layoutX="284.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+            <Button fx:id="btnCancel" layoutX="284.0" mnemonicParsing="false" onAction="#btnCancelOnAction" styleClass="btn-cancel">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

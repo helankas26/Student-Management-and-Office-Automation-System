@@ -172,7 +172,13 @@ public class MainDashboardController implements Initializable {
     @FXML
     private void btnStudentInsertOnAction(ActionEvent event) throws IOException {
         FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StudentInsert.fxml"));
-        Parent pane = loder.load();
+        AnchorPane pane = loder.load();
+        
+        StudentInsertController studentInsertController = loder.getController();
+        studentInsertController.setloginUser(loginUser);
+        studentInsertController.setBorderPaneClose(borderPaneMain);
+        studentInsertController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
         borderPaneMain.setCenter(pane);
     }
 

@@ -107,4 +107,40 @@ public class LoginDAO {
         }
     }
     
+    public boolean verifyPassword(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String password = "SELECT Password FROM login WHERE LoginID = ?";
+            preparedStatement = con.prepareStatement(password, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getLoginID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                if (login.getPassword().equals(resultSet.getString("Password"))) {
+                    login.setPassword(null);
+                    valid = true;
+                }
+            } else {
+                valid = false;
+                login.setPassword(null);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
 }

@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -46,6 +47,8 @@ public class StudentClassInsertController implements Initializable {
     @FXML
     private TableColumn<?, ?> tblStudentID;
     @FXML
+    private TableColumn<?, ?> tblRegisteredClassName;
+    @FXML
     private TableColumn<?, ?> tblRegisteredClassID;
     @FXML
     private TableColumn<?, ?> tblRegisteredDate;
@@ -61,6 +64,18 @@ public class StudentClassInsertController implements Initializable {
     private TableColumn<?, ?> tblClass;
     @FXML
     private AnchorPane anchorPaneStudentClassInsert;
+    
+    private AnchorPane anchorPaneMainCenter;
+    private BorderPane borderPaneMain;
+    
+    
+    public void setAnchorpaneClose(AnchorPane anchorPaneMainCenter) {
+        this.anchorPaneMainCenter = anchorPaneMainCenter;
+    }
+
+    public void setBorderPaneClose(BorderPane borderPaneMain) {
+        this.borderPaneMain = borderPaneMain;
+    }
 
     /**
      * Initializes the controller class.
@@ -71,31 +86,33 @@ public class StudentClassInsertController implements Initializable {
     }    
 
     @FXML
-    private void btnCenterCloseActionPerformed(ActionEvent event) {
+    private void btnCenterCloseOnAction(ActionEvent event) {
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(anchorPaneMainCenter);
     }
-
-    @FXML
-    private void cmbCategoryActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void cmbSubjectActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSearchActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnSaveActionPerformed(ActionEvent event) {
-    }
-
-    @FXML
-    private void btnCancelActionPerformed(ActionEvent event) {
-    }
-
+    
     @FXML
     private void tblAvailableClassOnMouseClicked(MouseEvent event) {
     }
-    
+
+    @FXML
+    private void cmbCategoryOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void cmbSubjectOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSearchOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnSaveOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnCancelOnAction(ActionEvent event) {
+    }
+  
 }
