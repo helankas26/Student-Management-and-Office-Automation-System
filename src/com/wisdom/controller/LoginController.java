@@ -73,7 +73,7 @@ public class LoginController implements Initializable {
     
     @FXML
     private void btnLoginOnAction(ActionEvent event) throws IOException {
-        if (isFieldEmpty()) {
+        if (isFieldsEmpty()) {
             login = new Login();
             login.setUserName(txtUsername.getText().trim());
             login.setPassword(txtPassword.getText().trim());
@@ -176,7 +176,7 @@ public class LoginController implements Initializable {
         }
     }
     
-    private boolean isFieldEmpty() {
+    private boolean isFieldsEmpty() {
         if (txtUsername.getText().equalsIgnoreCase("")) {
             changeField(txtUsername, "#de2700", lblUsername, "Username requied");
             if (txtPassword.getText().equalsIgnoreCase("")) {
