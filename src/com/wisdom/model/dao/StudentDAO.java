@@ -225,4 +225,33 @@ public class StudentDAO extends UserDAO {
         return valid;
     }
     
+    public boolean deleteStudent(Student student) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteStudent = "DELETE FROM student WHERE Status = ? AND StudentID = ?";
+            preparedStatement = con.prepareStatement(deleteStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, student.getStatus());
+            preparedStatement.setString(2, student.getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
 }
