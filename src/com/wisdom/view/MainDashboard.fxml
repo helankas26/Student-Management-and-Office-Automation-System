@@ -734,6 +734,16 @@
                            </graphic>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" onAction="#btnLoginRecordsOnAction" text="LOGIN RECORDS">
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/icons8-find-user-male-48.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </MenuItem>
+                        <SeparatorMenuItem mnemonicParsing="false" />
                         <Menu mnemonicParsing="false" text="DEACTIVATE USER">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -763,15 +773,6 @@
                               </MenuItem>
                            </items>
                         </Menu>
-                        <MenuItem mnemonicParsing="false" onAction="#btnLoginRecordsOnAction" text="LOGIN RECORDS">
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../resources/icons8-find-user-male-48.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </MenuItem>
                      </items>
                   </MenuButton>
                   <MenuButton layoutX="958.0" layoutY="5.0" mnemonicParsing="false" prefWidth="138.0" styleClass="mainMenuBar-button" text="REPORTS">
