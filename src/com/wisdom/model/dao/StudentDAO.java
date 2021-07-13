@@ -343,4 +343,51 @@ public class StudentDAO extends UserDAO {
         return valid;
     }
     
+    public boolean getPastStudent(Student student) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getPastStudent = "SELECT * FROM student_past WHERE StudentID = ?";
+            preparedStatement = con.prepareStatement(getPastStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, student.getUserID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                student.setInitial(resultSet.getString("Initial"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setGrade(resultSet.getString("Grade"));
+                student.setDateOfBirth(resultSet.getString("DoB"));
+                student.setSchool(resultSet.getString("School"));
+                student.setSex(resultSet.getString("Sex"));
+                student.setMedium(resultSet.getString("Medium"));
+                student.setEmail(resultSet.getString("Email"));
+                student.getParent().setTitle(resultSet.getString("Title"));
+                student.getParent().setParentName(resultSet.getString("ParentName"));
+                student.setTelNo(resultSet.getString("TelNo"));
+                student.setAddress(resultSet.getString("Address"));
+                student.setJoinedDate(resultSet.getString("JoinedDate"));
+                
+                valid = true;
+                
+            } else {
+                valid = false;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
 }

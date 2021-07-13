@@ -235,7 +235,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnPastStudentMakeActiveOnAction(ActionEvent event) {
+    private void btnPastStudentMakeActiveOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StudentMakeActive.fxml"));
+        AnchorPane pane = loder.load();
+        
+        StudentMakeActiveController studentMakeActiveController = loder.getController();
+        studentMakeActiveController.setBorderPaneClose(borderPaneMain);
+        studentMakeActiveController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

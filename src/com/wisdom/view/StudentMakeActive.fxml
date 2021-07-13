@@ -27,7 +27,7 @@
       <String fx:value="anchorPaneMainCenter-border" />
    </styleClass>
    <children>
-      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseOnAction" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/wisdom-title.png" />
@@ -40,7 +40,7 @@
                <children>
                   <ImageView fx:id="imgStudent" fitHeight="200.0" fitWidth="200.0" layoutX="5.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" styleClass="mainDashboard-border" />
                   <Label layoutX="5.0" layoutY="6.0" prefHeight="17.0" prefWidth="47.0" text="Picture" />
-                  <JFXButton fx:id="btnImgStudent" focusTraversable="false" layoutX="74.0" layoutY="243.0" onAction="#btnImgStudentActionPerformed" prefHeight="35.0" style="-fx-background-color: #22942a; -fx-text-fill: White;" text="BROWSE">
+                  <JFXButton fx:id="btnImgStudent" focusTraversable="false" layoutX="74.0" layoutY="243.0" onAction="#btnImgStudentOnAction" prefHeight="35.0" style="-fx-background-color: #22942a; -fx-text-fill: White;" text="BROWSE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -64,7 +64,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </TextField>
-                  <JFXButton fx:id="btnMakeActiveStudent" focusTraversable="false" layoutX="832.0" onAction="#btnMakeActiveStudentActionPerformed" prefHeight="44.0" prefWidth="200.0" style="-fx-border-color: #f7f7f7;" text="Make Active" textAlignment="RIGHT" AnchorPane.rightAnchor="2.2000000000000455">
+                  <JFXButton fx:id="btnMakeActiveStudent" focusTraversable="false" layoutX="832.0" onAction="#btnMakeActiveStudentOnAction" prefHeight="44.0" prefWidth="200.0" style="-fx-border-color: #f7f7f7;" text="Make Active" textAlignment="RIGHT" AnchorPane.rightAnchor="2.2000000000000455">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -79,7 +79,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </JFXButton>
-                  <Button fx:id="btnSearch" focusTraversable="false" layoutX="680.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnSearchActionPerformed" styleClass="btn-search">
+                  <Button fx:id="btnSearch" focusTraversable="false" layoutX="680.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnSearchOnAction" styleClass="btn-search">
                      <graphic>
                         <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -190,9 +190,9 @@
                         <DatePicker fx:id="dateJoinedDate" disable="true" layoutX="130.0" layoutY="144.0" prefHeight="26.0" prefWidth="127.0" styleClass="textField" />
                         <Label layoutX="160.0" text="Title" textFill="#910000" />
                         <Label layoutX="316.0" text="Name" textFill="#910000" />
-                        <ComboBox fx:id="cmdTitle" layoutX="130.0" layoutY="16.0" prefHeight="26.0" prefWidth="91.0" styleClass="textField" visibleRowCount="14" />
+                        <ComboBox fx:id="cmbTitle" layoutX="130.0" layoutY="16.0" prefHeight="26.0" prefWidth="91.0" styleClass="textField" visibleRowCount="14" />
                         <TextField fx:id="txtTelNo" layoutX="130.0" layoutY="46.0" styleClass="textField" />
-                        <TextArea fx:id="txtAddress" layoutX="130.0" layoutY="76.0" prefHeight="59.0" prefWidth="326.0" styleClass="textField" />
+                        <TextArea fx:id="txaAddress" layoutX="130.0" layoutY="76.0" prefHeight="59.0" prefWidth="326.0" styleClass="textField" wrapText="true" />
                      </children>
                   </AnchorPane>
                </children>
@@ -201,7 +201,7 @@
       </AnchorPane>
       <Pane layoutX="527.0" layoutY="346.0" prefHeight="80.0" prefWidth="460.0" AnchorPane.leftAnchor="527.0" AnchorPane.rightAnchor="291.0">
          <children>
-            <Button fx:id="btnEdit" focusTraversable="false" layoutX="130.0" mnemonicParsing="false" onAction="#btnEditActionPerformed" styleClass="btn-update">
+            <Button fx:id="btnEdit" focusTraversable="false" layoutX="130.0" mnemonicParsing="false" onAction="#btnEditOnAction" styleClass="btn-update">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -213,7 +213,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnDelete" focusTraversable="false" layoutX="260.0" mnemonicParsing="false" onAction="#btnDeleteActionPerformed" styleClass="btn-delete">
+            <Button fx:id="btnDelete" focusTraversable="false" layoutX="260.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" styleClass="btn-delete">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -225,7 +225,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelOnAction" styleClass="btn-cancel">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
