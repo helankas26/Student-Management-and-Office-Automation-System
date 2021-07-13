@@ -381,9 +381,9 @@ public class StudentInsertController implements Initializable {
     }
     
     private void clearFields() {
-        txtInitial.setText(null);
+        txtInitial.setText("");
         txtFirstName.setText(null);
-        txtLastName.setText(null);
+        txtLastName.setText("");
         cmbGrade.setValue(null);
         dateDoB.setValue(null);
         txtSchool.setText(null);
