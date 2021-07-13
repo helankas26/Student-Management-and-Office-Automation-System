@@ -7,6 +7,7 @@ package com.wisdom.model.dao;
 
 import com.wisdom.model.Login;
 import com.wisdom.util.DBConnectionUtil;
+import com.wisdom.util.IDGeneratorUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,10 +21,11 @@ import java.util.logging.Logger;
  */
 public class UserDAO {
     
-    private DBConnectionUtil dbConnectionUtil = DBConnectionUtil.getInstance();
-    private PreparedStatement preparedStatement;
-    private ResultSet resultSet;
-    private Connection con;
+    protected DBConnectionUtil dbConnectionUtil = DBConnectionUtil.getInstance();
+    protected IDGeneratorUtil idGeneratorUtil = IDGeneratorUtil.getInstance();
+    protected PreparedStatement preparedStatement;
+    protected ResultSet resultSet;
+    protected Connection con;
     
     public void getLoginUser(Login login, String user) {
         try {
