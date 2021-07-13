@@ -237,7 +237,7 @@ public class StudentUpdateController implements Initializable {
             alert.initModality(Modality.APPLICATION_MODAL);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
-            alert.setContentText("StudentID required to search");
+            alert.setContentText("StudentID required");
             alert.showAndWait();
         }
     }
