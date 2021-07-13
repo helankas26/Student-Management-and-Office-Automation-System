@@ -201,7 +201,7 @@ public class StudentUpdateController implements Initializable {
             student.setUserID(txtStudentID.getText());
             student.setStatus("past");
             
-            if (studentDAO.makePastStudent(student)) {
+            if (studentDAO.changeStudentStatus(student)) {
                 setTableView();
                 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

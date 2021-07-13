@@ -156,7 +156,7 @@ public class StudentDAO extends UserDAO {
         return valid;
     }
     
-    public boolean makePastStudent(Student student) {
+    public boolean changeStudentStatus(Student student) {
         boolean valid = false;
         try {
             con = dbConnectionUtil.getConnection();
