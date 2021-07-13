@@ -301,7 +301,7 @@ public class StudentInsertController implements Initializable {
             admission = new Admission();
             admission.setStaff(new Staff());
             
-            setFields();
+            getFields();
             
             if (studentDAO.insertStudent(student, admission)) {
                 setTableView();
@@ -360,7 +360,7 @@ public class StudentInsertController implements Initializable {
                 txtAdmissionFee.getText().isEmpty() || loginUser.getUser().getUserID().isEmpty();
     }
     
-    private void  setFields() {
+    private void getFields() {
         student.setInitial(txtInitial.getText().toUpperCase().trim());
         student.setFirstName(txtFirstName.getText());
         student.setLastName(txtLastName.getText().trim());
