@@ -254,4 +254,93 @@ public class StudentDAO extends UserDAO {
         return valid;
     }
     
+    public ArrayList<Student> getStudentPast() {
+        ArrayList<Student> studentList = new ArrayList<Student>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getStudentPast = "SELECT * FROM student_past";
+            preparedStatement = con.prepareStatement(getStudentPast, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Student student = new Student();
+                
+                student.setUserID(resultSet.getString("StudentID"));
+                student.setInitial(resultSet.getString("Initial"));
+                student.setFirstName(resultSet.getString("FirstName"));
+                student.setLastName(resultSet.getString("LastName"));
+                student.setGrade(resultSet.getString("Grade"));
+                student.setDateOfBirth(resultSet.getString("DoB"));
+                student.setSchool(resultSet.getString("School"));
+                student.setSex(resultSet.getString("Sex"));
+                student.setMedium(resultSet.getString("Medium"));
+                student.setEmail(resultSet.getString("Email"));
+                student.getParent().setTitle(resultSet.getString("Title"));
+                student.getParent().setParentName(resultSet.getString("ParentName"));
+                student.setTelNo(resultSet.getString("TelNo"));
+                student.setAddress(resultSet.getString("Address"));
+                student.setJoinedDate(resultSet.getString("JoinedDate"));
+                
+                studentList.add(student);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return studentList;
+    }
+    
+    public boolean insertStudentPast(Student student) {
+        student.setUserID(idGeneratorUtil.getStudentID(student.getJoinedDate()));
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String insertStudentPast = "INSERT INTO student (StudentID, Initial, FirstName, LastName, DoB, Sex, Grade, Medium, School, "
+                    + "TelNo, Address, Email, Status, JoinedDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            preparedStatement = con.prepareStatement(insertStudentPast, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, student.getUserID());
+            preparedStatement.setString(2, student.getInitial());
+            preparedStatement.setString(3, student.getFirstName());
+            preparedStatement.setString(4, student.getLastName());
+            preparedStatement.setDate(5, SQLDateUtil.parseDate(student.getDateOfBirth()));
+            preparedStatement.setString(6, student.getSex());
+            preparedStatement.setString(7, student.getGrade());
+            preparedStatement.setString(8, student.getMedium());
+            preparedStatement.setString(9, student.getSchool());
+            preparedStatement.setString(10, student.getTelNo());
+            preparedStatement.setString(11, student.getAddress());
+            preparedStatement.setString(12, student.getEmail());
+            preparedStatement.setString(13, student.getStatus());
+            preparedStatement.setDate(14, SQLDateUtil.parseDate(student.getJoinedDate()));
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+                valid = new ParentDAO().insertParent(student);
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StudentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
 }
