@@ -181,9 +181,9 @@ public class TeacherDAO extends UserDAO {
         try {
             con = dbConnectionUtil.getConnection();
             
-            String insertStudent = "UPDATE teacher SET Title = ?, Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
-                    + "TelNo = ?, Address = ?, Email = ?, Qualification= ? WHERE Status =? AND TeacherID = ?";
-            preparedStatement = con.prepareStatement(insertStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String updateTeacher = "UPDATE teacher SET Title = ?, Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
+                    + "TelNo = ?, Address = ?, Email = ?, Qualification= ? WHERE Status = ? AND TeacherID = ?";
+            preparedStatement = con.prepareStatement(updateTeacher, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, teacher.getTitle());
             preparedStatement.setString(2, teacher.getInitial());
             preparedStatement.setString(3, teacher.getFirstName());

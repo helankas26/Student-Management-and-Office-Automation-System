@@ -190,9 +190,9 @@ public class StudentDAO extends UserDAO {
         try {
             con = dbConnectionUtil.getConnection();
             
-            String insertStudent = "UPDATE student SET Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
-                    + "Grade = ?, Medium = ?, School = ?, TelNo = ?, Address = ?, Email = ? WHERE Status =? AND StudentID = ?";
-            preparedStatement = con.prepareStatement(insertStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String updateStudent = "UPDATE student SET Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
+                    + "Grade = ?, Medium = ?, School = ?, TelNo = ?, Address = ?, Email = ? WHERE Status = ? AND StudentID = ?";
+            preparedStatement = con.prepareStatement(updateStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, student.getInitial());
             preparedStatement.setString(2, student.getFirstName());
             preparedStatement.setString(3, student.getLastName());

@@ -630,7 +630,15 @@ public class MainDashboardController implements Initializable {
     }
     
     @FXML
-    private void btnStaffInsertOnAction(ActionEvent event) {
+    private void btnStaffInsertOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StaffInsert.fxml"));
+        AnchorPane pane = loder.load();
+        
+        StaffInsertController staffInsertController = loder.getController();
+        staffInsertController.setBorderPaneClose(borderPaneMain);
+        staffInsertController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
