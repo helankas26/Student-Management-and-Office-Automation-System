@@ -120,7 +120,7 @@ public class TeacherUpdateController implements Initializable {
     @FXML
     private TextArea txaQualifictions;
     
-     private AnchorPane anchorPaneMainCenter;
+    private AnchorPane anchorPaneMainCenter;
     private BorderPane borderPaneMain;
     
     private Teacher teacher;
@@ -140,7 +140,6 @@ public class TeacherUpdateController implements Initializable {
         return radGender;
     }
     
-
     /**
      * Initializes the controller class.
      */
