@@ -98,4 +98,71 @@ public class SubjectDAO {
         return SubjectList;
     }
     
+    public boolean getSubject(Subject subject) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getSubject = "SELECT * FROM subject WHERE SubjectID = ?";
+            preparedStatement = con.prepareStatement(getSubject, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, subject.getSubjectID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                subject.setSubjectName(resultSet.getString("SubjectName"));
+                subject.setMedium(resultSet.getString("Medium"));
+                subject.setCategory(new Category());
+                subject.getCategory().setCategoryID(resultSet.getString("CategoryID"));
+                valid = true;
+                
+            } else {
+                valid = false;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean updateSubject(Subject subject) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String updateSubject = "UPDATE subject SET SubjectName = ?, Medium = ?, CategoryID = ? WHERE SubjectID = ?";
+            preparedStatement = con.prepareStatement(updateSubject, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, subject.getSubjectName());
+            preparedStatement.setString(2, subject.getMedium());
+            preparedStatement.setString(3, subject.getCategory().getCategoryID());
+            preparedStatement.setString(4, subject.getSubjectID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(SubjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
 }
