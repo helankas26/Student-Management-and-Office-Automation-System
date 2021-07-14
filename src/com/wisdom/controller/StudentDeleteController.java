@@ -278,15 +278,6 @@ public class StudentDeleteController implements Initializable {
         clearFields();
     }
     
-    private boolean isFieldsEmpty() {
-        return txtStudentID.getText().isEmpty() || txtFirstName.getText().isEmpty() || 
-                cmbGrade.getValue() == null || dateDoB.getValue() == null || 
-                txtSchool.getText().isEmpty() || Gender.getSelectedToggle() == null || 
-                Medium.getSelectedToggle() == null || txtEmail.getText().isEmpty() || 
-                cmbTitle.getValue() == null || txtParentName.getText().isEmpty() || 
-                txtTelNo.getText().isEmpty() || txaAddress.getText().isEmpty();
-    }
-    
     private void setFields() {
         txtStudentID.setText(student.getUserID());
         txtInitial.setText(student.getInitial());
