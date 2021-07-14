@@ -654,7 +654,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnStaffDeleteOnAction(ActionEvent event) {
+    private void btnStaffDeleteOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StaffDelete.fxml"));
+        AnchorPane pane = loder.load();
+        
+        StaffDeleteController staffDeleteController = loder.getController();
+        staffDeleteController.setBorderPaneClose(borderPaneMain);
+        staffDeleteController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

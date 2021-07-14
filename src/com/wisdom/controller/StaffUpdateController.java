@@ -8,7 +8,6 @@ package com.wisdom.controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.wisdom.model.Staff;
-import com.wisdom.model.Teacher;
 import com.wisdom.model.dao.StaffDAO;
 import java.net.URL;
 import java.time.LocalDate;
@@ -180,7 +179,7 @@ public class StaffUpdateController implements Initializable {
                 alert.initModality(Modality.APPLICATION_MODAL);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("Invalid StaffID or deactivated staff Member");
+                alert.setContentText("Invalid StaffID or deactivated staff member");
                 alert.showAndWait();
             }
   
@@ -282,7 +281,7 @@ public class StaffUpdateController implements Initializable {
                 alert.initModality(Modality.APPLICATION_MODAL);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("Invalid StaffID or deactivated staff Member");
+                alert.setContentText("Invalid StaffID or deactivated staff member");
                 alert.showAndWait();
                 
             }
