@@ -214,6 +214,35 @@ public class TeacherDAO extends UserDAO {
         
         return valid;
     }
+    
+    public boolean deleteTeacher(Teacher teacher) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteTeacher = "DELETE FROM teacher WHERE Status = ? AND TeacherID = ?";
+            preparedStatement = con.prepareStatement(deleteTeacher, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, teacher.getStatus());
+            preparedStatement.setString(2, teacher.getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
      
      
 }
