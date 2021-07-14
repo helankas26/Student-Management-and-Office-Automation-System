@@ -161,8 +161,8 @@ public class StudentDAO extends UserDAO {
         try {
             con = dbConnectionUtil.getConnection();
             
-            String makePastStudent = "UPDATE student SET Status = ? WHERE StudentID = ?";
-            preparedStatement = con.prepareStatement(makePastStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String changeStudentStatus = "UPDATE student SET Status = ? WHERE StudentID = ?";
+            preparedStatement = con.prepareStatement(changeStudentStatus, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, student.getStatus());
             preparedStatement.setString(2, student.getUserID());
             int rowAffected  = preparedStatement.executeUpdate();
