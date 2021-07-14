@@ -63,7 +63,7 @@ public class CategoryDAO {
         try {
             con = dbConnectionUtil.getConnection();
             
-            String getCategory = "SELECT * FROM category";
+            String getCategory = "SELECT * FROM category ORDER BY CategoryID ASC";
             preparedStatement = con.prepareStatement(getCategory, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = preparedStatement.executeQuery();
             
@@ -90,4 +90,67 @@ public class CategoryDAO {
         
         return categoryList;
     }
+    
+    public boolean getCategory(Category category) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getCategory = "SELECT * FROM category WHERE CategoryID = ?";
+            preparedStatement = con.prepareStatement(getCategory, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, category.getCategoryID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                category.setCategoryName(resultSet.getString("CategoryName"));
+                valid = true;
+                
+            } else {
+                valid = false;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+     public boolean updateCategory(Category category) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String updateCategory = "UPDATE category SET CategoryName = ? WHERE CategoryID = ?";
+            preparedStatement = con.prepareStatement(updateCategory, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, category.getCategoryName());
+            preparedStatement.setString(2, category.getCategoryID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
 }
