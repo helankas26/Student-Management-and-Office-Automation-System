@@ -118,6 +118,16 @@ public class CategoryInsertController implements Initializable {
                 } else {
                     clearFields();
                 }
+                
+            } else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("/com/wisdom/resources/wisdom-title.png"));
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Category Name must be unique");
+                alert.showAndWait();
             }
             
         } else {

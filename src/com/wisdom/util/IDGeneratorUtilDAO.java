@@ -33,7 +33,7 @@ public final class IDGeneratorUtilDAO {
         try {
             con = dbConnectionUtil.getConnection();
            
-            String loginIDCol = "SELECT LoginID FROM login";
+            String loginIDCol = "SELECT LoginID FROM login ORDER BY LoginID ASC";
             preparedStatement = con.prepareStatement(loginIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = preparedStatement.executeQuery();
          
@@ -117,7 +117,7 @@ public final class IDGeneratorUtilDAO {
         try {
             con = dbConnectionUtil.getConnection();
            
-            String classIDCol = "SELECT ClassID FROM class";
+            String classIDCol = "SELECT ClassID FROM class ORDER BY ClassID ASC";
             preparedStatement = con.prepareStatement(classIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = preparedStatement.executeQuery();
          
@@ -145,7 +145,7 @@ public final class IDGeneratorUtilDAO {
         try {
             con = dbConnectionUtil.getConnection();
            
-            String categoryIDCol = "SELECT CategoryID FROM category";
+            String categoryIDCol = "SELECT CategoryID FROM category ORDER BY CategoryID ASC";
             preparedStatement = con.prepareStatement(categoryIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = preparedStatement.executeQuery();
          
@@ -173,7 +173,7 @@ public final class IDGeneratorUtilDAO {
         try {
             con = dbConnectionUtil.getConnection();
            
-            String subjectIDCol = "SELECT SubjectID FROM subject";
+            String subjectIDCol = "SELECT SubjectID FROM subject ORDER BY SubjectID ASC";
             preparedStatement = con.prepareStatement(subjectIDCol, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             resultSet = preparedStatement.executeQuery();
          
