@@ -7,13 +7,7 @@ package com.wisdom.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
-import com.wisdom.model.Admission;
-import com.wisdom.model.Login;
-import com.wisdom.model.Staff;
-import com.wisdom.model.Student;
 import com.wisdom.model.Teacher;
-import com.wisdom.model.dao.LoginDAO;
-import com.wisdom.model.dao.StudentDAO;
 import com.wisdom.model.dao.TeacherDAO;
 import java.net.URL;
 import java.time.LocalDate;
@@ -24,7 +18,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -151,6 +144,8 @@ public class TeacherInsertController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         cmbTitle.getItems().addAll("Mr.", "Miss.", "Mrs.");
         dateJoinedDate.setValue(LocalDate.now());
+        
+        setTableView();
     }    
 
     @FXML
