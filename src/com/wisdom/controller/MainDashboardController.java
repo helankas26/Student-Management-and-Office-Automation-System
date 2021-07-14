@@ -466,7 +466,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnSubjectDeleteOnAction(ActionEvent event) {
+    private void btnSubjectDeleteOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/SubjectDelete.fxml"));
+        AnchorPane pane = loder.load();
+        
+        SubjectDeleteController subjectDeleteController = loder.getController();
+        subjectDeleteController.setBorderPaneClose(borderPaneMain);
+        subjectDeleteController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
