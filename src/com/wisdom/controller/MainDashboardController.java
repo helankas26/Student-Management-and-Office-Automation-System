@@ -297,7 +297,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnTeacherUpdateOnAction(ActionEvent event) {
+    private void btnTeacherUpdateOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/TeacherUpdate.fxml"));
+        AnchorPane pane = loder.load();
+        
+        TeacherUpdateController teacherUpdateController = loder.getController();
+        teacherUpdateController.setBorderPaneClose(borderPaneMain);
+        teacherUpdateController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

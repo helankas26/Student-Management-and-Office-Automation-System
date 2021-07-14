@@ -60,7 +60,7 @@ public class TeacherDAO extends UserDAO {
         return valid;
     }
     
-     public ArrayList<Teacher> getTeacherActive() {
+    public ArrayList<Teacher> getTeacherActive() {
         ArrayList<Teacher> teacherList = new ArrayList<Teacher>();
         try {
             con = dbConnectionUtil.getConnection();
@@ -102,4 +102,118 @@ public class TeacherDAO extends UserDAO {
         
         return teacherList;
     }
+    
+    public boolean getTeacher(Teacher teacher) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getTeacher = "SELECT * FROM teacher_active WHERE TeacherID = ?";
+            preparedStatement = con.prepareStatement(getTeacher, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, teacher.getUserID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                teacher.setTitle(resultSet.getString("Title"));
+                teacher.setInitial(resultSet.getString("Initial"));
+                teacher.setFirstName(resultSet.getString("FirstName"));
+                teacher.setLastName(resultSet.getString("LastName"));
+                teacher.setDateOfBirth(resultSet.getString("DoB"));
+                teacher.setSex(resultSet.getString("Sex"));
+                teacher.setTelNo(resultSet.getString("TelNo"));
+                teacher.setAddress(resultSet.getString("Address"));
+                teacher.setEmail(resultSet.getString("Email"));
+                teacher.setQualification(resultSet.getString("Qualification"));
+                teacher.setJoinedDate(resultSet.getString("JoinedDate"));
+                
+                valid = true;
+                
+            } else {
+                valid = false;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean changeTeacherStatus(Teacher teacher) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String changeTeacherStatus = "UPDATE teacher SET Status = ? WHERE TeacherID = ?";
+            preparedStatement = con.prepareStatement(changeTeacherStatus, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, teacher.getStatus());
+            preparedStatement.setString(2, teacher.getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+                valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean updateTeacher(Teacher teacher) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String insertStudent = "UPDATE teacher SET Title = ?, Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
+                    + "TelNo = ?, Address = ?, Email = ?, Qualification= ? WHERE TeacherID = ?";
+            preparedStatement = con.prepareStatement(insertStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, teacher.getTitle());
+            preparedStatement.setString(2, teacher.getInitial());
+            preparedStatement.setString(3, teacher.getFirstName());
+            preparedStatement.setString(4, teacher.getLastName());
+            preparedStatement.setDate(5, SQLDateUtil.parseDate(teacher.getDateOfBirth()));
+            preparedStatement.setString(6, teacher.getSex());
+            preparedStatement.setString(7, teacher.getTelNo());
+            preparedStatement.setString(8, teacher.getAddress());
+            preparedStatement.setString(9, teacher.getEmail());
+            preparedStatement.setString(10, teacher.getQualification());
+            preparedStatement.setString(11, teacher.getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+     
+     
 }
