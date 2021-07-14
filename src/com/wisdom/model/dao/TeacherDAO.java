@@ -329,6 +329,49 @@ public class TeacherDAO extends UserDAO {
         
         return valid;
     }
-     
-     
+    
+    public boolean getDeactivateTeacher(Teacher teacher) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getDeactivateTeacher = "SELECT * FROM teacher_deactivate WHERE TeacherID = ?";
+            preparedStatement = con.prepareStatement(getDeactivateTeacher, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, teacher.getUserID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                teacher.setTitle(resultSet.getString("Title"));
+                teacher.setInitial(resultSet.getString("Initial"));
+                teacher.setFirstName(resultSet.getString("FirstName"));
+                teacher.setLastName(resultSet.getString("LastName"));
+                teacher.setDateOfBirth(resultSet.getString("DoB"));
+                teacher.setSex(resultSet.getString("Sex"));
+                teacher.setTelNo(resultSet.getString("TelNo"));
+                teacher.setAddress(resultSet.getString("Address"));
+                teacher.setEmail(resultSet.getString("Email"));
+                teacher.setQualification(resultSet.getString("Qualification"));
+                teacher.setJoinedDate(resultSet.getString("JoinedDate"));
+                
+                valid = true;
+                
+            } else {
+                valid = false;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(TeacherDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+         
 }
