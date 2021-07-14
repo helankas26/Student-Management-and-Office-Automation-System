@@ -7,7 +7,6 @@ package com.wisdom.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
-import com.wisdom.model.Student;
 import com.wisdom.model.Teacher;
 import com.wisdom.model.dao.TeacherDAO;
 import java.net.URL;
@@ -123,7 +122,7 @@ public class TeacherMakeActiveController implements Initializable {
     @FXML
     private TextArea txaQualifictions;
     
-private AnchorPane anchorPaneMainCenter;
+    private AnchorPane anchorPaneMainCenter;
     private BorderPane borderPaneMain;
     
     private Teacher teacher;
@@ -365,7 +364,7 @@ private AnchorPane anchorPaneMainCenter;
         clearFields();
     }
     
-   private boolean isFieldsEmpty() {
+    private boolean isFieldsEmpty() {
         return txtTeacherID.getText().isEmpty() || cmbTitle.getValue() == null || 
                 txtFirstName.getText().isEmpty() || dateDoB.getValue() == null || 
                 Gender.getSelectedToggle() == null  || txtTelNo.getText().isEmpty() || 
