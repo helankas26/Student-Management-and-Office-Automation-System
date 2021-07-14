@@ -124,7 +124,7 @@ public class CategoryDAO {
         return valid;
     }
     
-     public boolean updateCategory(Category category) {
+    public boolean updateCategory(Category category) {
         boolean valid = false;
         try {
             con = dbConnectionUtil.getConnection();
@@ -133,6 +133,34 @@ public class CategoryDAO {
             preparedStatement = con.prepareStatement(updateCategory, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, category.getCategoryName());
             preparedStatement.setString(2, category.getCategoryID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean deleteCategory(Category category) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteCategory = "DELETE FROM category WHERE CategoryID = ?";
+            preparedStatement = con.prepareStatement(deleteCategory, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, category.getCategoryID());
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {

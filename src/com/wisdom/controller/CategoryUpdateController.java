@@ -7,7 +7,6 @@ package com.wisdom.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.wisdom.model.Category;
-import com.wisdom.model.Teacher;
 import com.wisdom.model.dao.CategoryDAO;
 import java.net.URL;
 import java.util.ArrayList;

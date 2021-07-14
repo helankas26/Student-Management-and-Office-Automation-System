@@ -6,23 +6,16 @@
 package com.wisdom.controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.wisdom.model.Admission;
 import com.wisdom.model.Category;
-import com.wisdom.model.Staff;
-import com.wisdom.model.Student;
 import com.wisdom.model.dao.CategoryDAO;
-import com.wisdom.model.dao.StudentDAO;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -150,10 +143,6 @@ public class CategoryInsertController implements Initializable {
     
     private void getFields() {
         category.setCategoryName(txtCategoryName.getText());
-    }
-    
-    private void setFields() {
-        txtCategoryName.setText(category.getCategoryName());;
     }
     
     private void clearFields() {
