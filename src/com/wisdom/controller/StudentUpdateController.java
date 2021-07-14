@@ -258,7 +258,7 @@ public class StudentUpdateController implements Initializable {
                 alert.initModality(Modality.APPLICATION_MODAL);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("Invalid studentID or student may be past");
+                alert.setContentText("Invalid studentID or past student");
                 alert.showAndWait();
             }
   
@@ -300,7 +300,14 @@ public class StudentUpdateController implements Initializable {
                 }
                 
             } else {
-                
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("/com/wisdom/resources/wisdom-title.png"));
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Invalid studentID or past student");
+                alert.showAndWait();
             }
   
         } else {
@@ -344,6 +351,7 @@ public class StudentUpdateController implements Initializable {
         student.getParent().setParentName(txtParentName.getText());
         student.setTelNo(txtTelNo.getText());
         student.setAddress(txaAddress.getText());
+        student.setStatus("active");
     }
     
     private void setFields() {

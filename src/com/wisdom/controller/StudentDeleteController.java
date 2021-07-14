@@ -195,7 +195,7 @@ public class StudentDeleteController implements Initializable {
                 alert.initModality(Modality.APPLICATION_MODAL);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("Invalid studentID or student may be past");
+                alert.setContentText("Invalid studentID or past student");
                 alert.showAndWait();
             }
   
@@ -255,7 +255,7 @@ public class StudentDeleteController implements Initializable {
                     alert3.initModality(Modality.APPLICATION_MODAL);
                     alert3.setTitle("Warning");
                     alert3.setHeaderText(null);
-                    alert3.setContentText("Invalid studentID");
+                    alert3.setContentText("Invalid studentID or past student");
                     alert3.showAndWait();
                 }
                 

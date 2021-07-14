@@ -260,7 +260,7 @@ public class StudentMakeActiveController implements Initializable {
                 alert.initModality(Modality.APPLICATION_MODAL);
                 alert.setTitle("Warning");
                 alert.setHeaderText(null);
-                alert.setContentText("Invalid studentID or student may be past");
+                alert.setContentText("Invalid studentID or active student");
                 alert.showAndWait();
             }
   
@@ -302,7 +302,14 @@ public class StudentMakeActiveController implements Initializable {
                 }
                 
             } else {
-                
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("/com/wisdom/resources/wisdom-title.png"));
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Invalid studentID or active student");
+                alert.showAndWait();
             }
   
         } else {
@@ -361,7 +368,7 @@ public class StudentMakeActiveController implements Initializable {
                     alert3.initModality(Modality.APPLICATION_MODAL);
                     alert3.setTitle("Warning");
                     alert3.setHeaderText(null);
-                    alert3.setContentText("Invalid studentID");
+                    alert3.setContentText("Invalid studentID or active student");
                     alert3.showAndWait();
                 }
                 
@@ -409,6 +416,7 @@ public class StudentMakeActiveController implements Initializable {
         student.setTelNo(txtTelNo.getText());
         student.setAddress(txaAddress.getText());
         student.setJoinedDate(dateJoinedDate.getValue().toString());
+        student.setStatus("past");
     }
     
     private void setFields() {

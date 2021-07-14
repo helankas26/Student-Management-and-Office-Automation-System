@@ -182,7 +182,7 @@ public class TeacherDAO extends UserDAO {
             con = dbConnectionUtil.getConnection();
             
             String insertStudent = "UPDATE teacher SET Title = ?, Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
-                    + "TelNo = ?, Address = ?, Email = ?, Qualification= ? WHERE TeacherID = ?";
+                    + "TelNo = ?, Address = ?, Email = ?, Qualification= ? WHERE Status =? AND TeacherID = ?";
             preparedStatement = con.prepareStatement(insertStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, teacher.getTitle());
             preparedStatement.setString(2, teacher.getInitial());
@@ -194,7 +194,8 @@ public class TeacherDAO extends UserDAO {
             preparedStatement.setString(8, teacher.getAddress());
             preparedStatement.setString(9, teacher.getEmail());
             preparedStatement.setString(10, teacher.getQualification());
-            preparedStatement.setString(11, teacher.getUserID());
+            preparedStatement.setString(11, teacher.getStatus());
+            preparedStatement.setString(12, teacher.getUserID());
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {

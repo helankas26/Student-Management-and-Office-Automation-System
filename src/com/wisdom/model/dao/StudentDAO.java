@@ -191,7 +191,7 @@ public class StudentDAO extends UserDAO {
             con = dbConnectionUtil.getConnection();
             
             String insertStudent = "UPDATE student SET Initial = ?, FirstName = ?, LastName = ?, DoB = ?, Sex = ?, "
-                    + "Grade = ?, Medium = ?, School = ?, TelNo = ?, Address = ?, Email = ? WHERE StudentID = ?";
+                    + "Grade = ?, Medium = ?, School = ?, TelNo = ?, Address = ?, Email = ? WHERE Status =? AND StudentID = ?";
             preparedStatement = con.prepareStatement(insertStudent, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, student.getInitial());
             preparedStatement.setString(2, student.getFirstName());
@@ -204,7 +204,8 @@ public class StudentDAO extends UserDAO {
             preparedStatement.setString(9, student.getTelNo());
             preparedStatement.setString(10, student.getAddress());
             preparedStatement.setString(11, student.getEmail());
-            preparedStatement.setString(12, student.getUserID());
+            preparedStatement.setString(12, student.getStatus());
+            preparedStatement.setString(13, student.getUserID());
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {
