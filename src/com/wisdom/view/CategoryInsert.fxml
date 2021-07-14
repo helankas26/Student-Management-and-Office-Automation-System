@@ -20,7 +20,7 @@
       <String fx:value="anchorPaneMainCenter-border" />
    </styleClass>
    <children>
-      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseOnAction" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/wisdom-title.png" />
@@ -36,7 +36,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSearch" disable="true" focusTraversable="false" layoutX="326.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnSearchActionPerformed" styleClass="btn-search">
+                  <Button fx:id="btnSearch" disable="true" focusTraversable="false" layoutX="326.0" layoutY="32.0" mnemonicParsing="false" onAction="#btnSearchOnAction" styleClass="btn-search">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -75,7 +75,7 @@
       </TableView>
       <Pane layoutX="130.0" layoutY="300.0" prefHeight="80.0" prefWidth="460.0">
          <children>
-            <Button fx:id="btnSave" focusTraversable="false" mnemonicParsing="false" onAction="#btnSaveActionPerformed" styleClass="btn-save">
+            <Button fx:id="btnSave" focusTraversable="false" mnemonicParsing="false" onAction="#btnSaveOnAction" styleClass="btn-save">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -87,7 +87,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelOnAction" styleClass="btn-cancel">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

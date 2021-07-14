@@ -406,7 +406,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnCategoryInsertOnAction(ActionEvent event) {
+    private void btnCategoryInsertOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/CategoryInsert.fxml"));
+        AnchorPane pane = loder.load();
+        
+        CategoryInsertController categoryInsertController = loder.getController();
+        categoryInsertController.setBorderPaneClose(borderPaneMain);
+        categoryInsertController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
