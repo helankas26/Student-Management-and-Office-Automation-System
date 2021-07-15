@@ -728,7 +728,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnUserUpdateOnAction(ActionEvent event) {
+    private void btnUserUpdateOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/UserUpdate.fxml"));
+        AnchorPane pane = loder.load();
+        
+        UserUpdateController userUpdateController = loder.getController();
+        userUpdateController.setBorderPaneClose(borderPaneMain);
+        userUpdateController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

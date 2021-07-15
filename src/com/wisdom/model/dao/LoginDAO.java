@@ -388,5 +388,99 @@ public class LoginDAO {
         return logintList;
     }
     
+    public boolean getLogin(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLogin = "SELECT * FROM login WHERE Status = ? AND LoginID = ?";
+            preparedStatement = con.prepareStatement(getLogin, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getStatus());
+            preparedStatement.setString(2, login.getLoginID());
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                login.setUserName(resultSet.getString("UserName"));
+                login.setPrivilege(resultSet.getString("Privilege"));
+                
+                valid = true;
+                
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean changeLoginStatus(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String changeLoginStatus = "UPDATE login SET Status = ? WHERE LoginID = ?";
+            preparedStatement = con.prepareStatement(changeLoginStatus, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getStatus());
+            preparedStatement.setString(2, login.getLoginID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+                valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean updateLogin(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String updateLogin = "UPDATE login SET Password = ?, Privilege = ?  WHERE Status = ? AND LoginID = ?";
+            preparedStatement = con.prepareStatement(updateLogin, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getPassword());
+            preparedStatement.setString(2, login.getPrivilege());
+            preparedStatement.setString(3, login.getStatus());
+            preparedStatement.setString(4, login.getLoginID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     
 }
