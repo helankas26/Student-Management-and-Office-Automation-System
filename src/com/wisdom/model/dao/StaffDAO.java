@@ -367,4 +367,46 @@ public class StaffDAO extends UserDAO {
         return valid;
     }
     
+    public ArrayList<Staff> getStaffNotInLogin() {
+        ArrayList<Staff> staffList = new ArrayList<Staff>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getStaffNotInLogin = "SELECT * FROM staff_active WHERE StaffID NOT IN (SELECT StaffID  FROM login_staff)";
+            preparedStatement = con.prepareStatement(getStaffNotInLogin, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Staff staff = new Staff();
+                
+                staff.setUserID(resultSet.getString("StaffID"));
+                staff.setTitle(resultSet.getString("Title"));
+                staff.setInitial(resultSet.getString("Initial"));
+                staff.setFirstName(resultSet.getString("FirstName"));
+                staff.setLastName(resultSet.getString("LastName"));
+                staff.setDateOfBirth(resultSet.getString("DoB"));
+                staff.setSex(resultSet.getString("Sex"));
+                staff.setTelNo(resultSet.getString("TelNo"));
+                staff.setAddress(resultSet.getString("Address"));
+                staff.setEmail(resultSet.getString("Email"));
+                staff.setJoinedDate(resultSet.getString("JoinedDate"));
+                
+                staffList.add(staff);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(StaffDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(StaffDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return staffList;
+    }
+    
 }

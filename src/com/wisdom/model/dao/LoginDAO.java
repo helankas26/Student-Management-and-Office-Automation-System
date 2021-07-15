@@ -8,10 +8,12 @@ package com.wisdom.model.dao;
 import com.wisdom.model.Login;
 import com.wisdom.model.User;
 import com.wisdom.util.DBConnectionUtil;
+import com.wisdom.util.IDGeneratorUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,6 +24,7 @@ import java.util.logging.Logger;
 public class LoginDAO {
     
     private DBConnectionUtil dbConnectionUtil = DBConnectionUtil.getInstance();
+    private IDGeneratorUtil idGeneratorUtil = IDGeneratorUtil.getInstance();
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private Connection con;
@@ -142,5 +145,248 @@ public class LoginDAO {
         
         return valid;
     }
+    
+    public boolean insertLogin(Login login, String loginFor) {
+        login.setLoginID(idGeneratorUtil.getLoginID());
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String insertLogin = "INSERT INTO login (LoginID, UserName, Password, Privilege) VALUES (?, ?, ?, ?)";
+            preparedStatement = con.prepareStatement(insertLogin, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getLoginID());
+            preparedStatement.setString(2, login.getUsername());
+            preparedStatement.setString(3, login.getPassword());
+            preparedStatement.setString(4, login.getPrivilege());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+                if (loginFor.equals("Staff")) {
+                    valid = insertLoginStaff(login);
+                } else if (loginFor.equals("Teacher")) {
+                    valid = insertLoginTeacher(login);
+                }
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean insertLoginStaff(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String insertLoginStaff = "INSERT INTO login_staff (LoginID, StaffID) VALUES (?, ?)";
+            preparedStatement = con.prepareStatement(insertLoginStaff, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getLoginID());
+            preparedStatement.setString(2, login.getUser().getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+                valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean insertLoginTeacher(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String insertLoginTeacher = "INSERT INTO login_teacher (LoginID, TeacherID) VALUES (?, ?)";
+            preparedStatement = con.prepareStatement(insertLoginTeacher, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getLoginID());
+            preparedStatement.setString(2, login.getUser().getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+                valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public ArrayList<Login> getLoginStaffActive() {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLoginStaffActive = "SELECT * FROM login_active_staff";
+            preparedStatement = con.prepareStatement(getLoginStaffActive, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setPrivilege(resultSet.getString("Privilege"));
+                login.setUser(new User());
+                login.getUser().setUserID(resultSet.getString("StaffID"));
+                login.getUser().setFirstName(resultSet.getString("FirstName"));
+                
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
+    
+    public ArrayList<Login> getLoginStaffDeactivate() {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLoginStaffDeactivate = "SELECT * FROM login_deactivate_staff";
+            preparedStatement = con.prepareStatement(getLoginStaffDeactivate, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setPrivilege(resultSet.getString("Privilege"));
+                login.setUser(new User());
+                login.getUser().setUserID(resultSet.getString("StaffID"));
+                login.getUser().setFirstName(resultSet.getString("FirstName"));
+                
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
+    
+    public ArrayList<Login> getLoginTeacherActive() {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLoginTeacherActive = "SELECT * FROM login_active_teacher";
+            preparedStatement = con.prepareStatement(getLoginTeacherActive, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setPrivilege(resultSet.getString("Privilege"));
+                login.setUser(new User());
+                login.getUser().setUserID(resultSet.getString("TeacherID"));
+                login.getUser().setFirstName(resultSet.getString("FirstName"));
+                
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
+    
+    public ArrayList<Login> getLoginTeacherDeactivate() {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLoginTeacherDeactivate = "SELECT * FROM login_deactivate_teacher";
+            preparedStatement = con.prepareStatement(getLoginTeacherDeactivate, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setPrivilege(resultSet.getString("Privilege"));
+                login.setUser(new User());
+                login.getUser().setUserID(resultSet.getString("TeacherID"));
+                login.getUser().setFirstName(resultSet.getString("FirstName"));
+                
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
+    
     
 }
