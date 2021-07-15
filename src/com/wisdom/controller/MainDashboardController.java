@@ -752,7 +752,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnDeactivateUserOnAction(ActionEvent event) {
+    private void btnDeactivateUserOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/UserDeactivate.fxml"));
+        AnchorPane pane = loder.load();
+        
+        UserDeactivateController userDeactivateController = loder.getController();
+        userDeactivateController.setBorderPaneClose(borderPaneMain);
+        userDeactivateController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

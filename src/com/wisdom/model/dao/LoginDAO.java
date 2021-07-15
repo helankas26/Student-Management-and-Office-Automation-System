@@ -511,5 +511,39 @@ public class LoginDAO {
         return valid;
     }
     
+    public ArrayList<Login> getDeactivateLogin() {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getDeactivateLogin = "SELECT * FROM login WHERE Status = ?";
+            preparedStatement = con.prepareStatement(getDeactivateLogin, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, "deactivate");
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setPrivilege(resultSet.getString("Privilege"));
+                
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
     
 }
