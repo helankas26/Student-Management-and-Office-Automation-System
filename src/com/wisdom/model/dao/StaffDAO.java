@@ -6,7 +6,7 @@
 package com.wisdom.model.dao;
 
 import com.wisdom.model.Staff;
-import com.wisdom.util.SQLDateUtil;
+import com.wisdom.util.SQLDateTimeUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,12 +33,12 @@ public class StaffDAO extends UserDAO {
             preparedStatement.setString(3, staff.getInitial());
             preparedStatement.setString(4, staff.getFirstName());
             preparedStatement.setString(5, staff.getLastName());
-            preparedStatement.setDate(6, SQLDateUtil.parseDate(staff.getDateOfBirth()));
+            preparedStatement.setDate(6, SQLDateTimeUtil.parseDate(staff.getDateOfBirth()));
             preparedStatement.setString(7, staff.getSex());
             preparedStatement.setString(8, staff.getTelNo());
             preparedStatement.setString(9, staff.getAddress());
             preparedStatement.setString(10, staff.getEmail());
-            preparedStatement.setDate(11, SQLDateUtil.parseDate(staff.getJoinedDate()));
+            preparedStatement.setDate(11, SQLDateTimeUtil.parseDate(staff.getJoinedDate()));
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {
@@ -185,7 +185,7 @@ public class StaffDAO extends UserDAO {
             preparedStatement.setString(2, staff.getInitial());
             preparedStatement.setString(3, staff.getFirstName());
             preparedStatement.setString(4, staff.getLastName());
-            preparedStatement.setDate(5, SQLDateUtil.parseDate(staff.getDateOfBirth()));
+            preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(staff.getDateOfBirth()));
             preparedStatement.setString(6, staff.getSex());
             preparedStatement.setString(7, staff.getTelNo());
             preparedStatement.setString(8, staff.getAddress());
@@ -297,13 +297,13 @@ public class StaffDAO extends UserDAO {
             preparedStatement.setString(3, staff.getInitial());
             preparedStatement.setString(4, staff.getFirstName());
             preparedStatement.setString(5, staff.getLastName());
-            preparedStatement.setDate(6, SQLDateUtil.parseDate(staff.getDateOfBirth()));
+            preparedStatement.setDate(6, SQLDateTimeUtil.parseDate(staff.getDateOfBirth()));
             preparedStatement.setString(7, staff.getSex());
             preparedStatement.setString(8, staff.getTelNo());
             preparedStatement.setString(9, staff.getAddress());
             preparedStatement.setString(10, staff.getEmail());
             preparedStatement.setString(11, staff.getStatus());
-            preparedStatement.setDate(12, SQLDateUtil.parseDate(staff.getJoinedDate()));
+            preparedStatement.setDate(12, SQLDateTimeUtil.parseDate(staff.getJoinedDate()));
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {

@@ -7,7 +7,7 @@ package com.wisdom.model.dao;
 
 import com.wisdom.model.Admission;
 import com.wisdom.util.DBConnectionUtil;
-import com.wisdom.util.SQLDateUtil;
+import com.wisdom.util.SQLDateTimeUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,7 +35,7 @@ public class AdmissionDAO {
             preparedStatement = con.prepareStatement(insertAdmission, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, admission.getStudent().getUserID());
             preparedStatement.setString(2, admission.getStaff().getUserID());
-            preparedStatement.setDate(3, SQLDateUtil.parseDate(admission.getAdmissionDate()));
+            preparedStatement.setDate(3, SQLDateTimeUtil.parseDate(admission.getAdmissionDate()));
             preparedStatement.setDouble(4,admission.getAdmissionFee());
             int rowAffected  = preparedStatement.executeUpdate();
             

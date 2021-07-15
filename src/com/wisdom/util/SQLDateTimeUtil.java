@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Helanka
  */
-public class SQLDateUtil {
+public class SQLDateTimeUtil {
     
     private static Date sqlDate;
     

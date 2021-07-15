@@ -7,7 +7,7 @@ package com.wisdom.model.dao;
 
 import com.wisdom.model.Admission;
 import com.wisdom.model.Student;
-import com.wisdom.util.SQLDateUtil;
+import com.wisdom.util.SQLDateTimeUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public class StudentDAO extends UserDAO {
             preparedStatement.setString(2, student.getInitial());
             preparedStatement.setString(3, student.getFirstName());
             preparedStatement.setString(4, student.getLastName());
-            preparedStatement.setDate(5, SQLDateUtil.parseDate(student.getDateOfBirth()));
+            preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(student.getDateOfBirth()));
             preparedStatement.setString(6, student.getSex());
             preparedStatement.setString(7, student.getGrade());
             preparedStatement.setString(8, student.getMedium());
@@ -41,7 +41,7 @@ public class StudentDAO extends UserDAO {
             preparedStatement.setString(10, student.getTelNo());
             preparedStatement.setString(11, student.getAddress());
             preparedStatement.setString(12, student.getEmail());
-            preparedStatement.setDate(13, SQLDateUtil.parseDate(student.getJoinedDate()));
+            preparedStatement.setDate(13, SQLDateTimeUtil.parseDate(student.getJoinedDate()));
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {
@@ -196,7 +196,7 @@ public class StudentDAO extends UserDAO {
             preparedStatement.setString(1, student.getInitial());
             preparedStatement.setString(2, student.getFirstName());
             preparedStatement.setString(3, student.getLastName());
-            preparedStatement.setDate(4, SQLDateUtil.parseDate(student.getDateOfBirth()));
+            preparedStatement.setDate(4, SQLDateTimeUtil.parseDate(student.getDateOfBirth()));
             preparedStatement.setString(5, student.getSex());
             preparedStatement.setString(6, student.getGrade());
             preparedStatement.setString(7, student.getMedium());
@@ -314,7 +314,7 @@ public class StudentDAO extends UserDAO {
             preparedStatement.setString(2, student.getInitial());
             preparedStatement.setString(3, student.getFirstName());
             preparedStatement.setString(4, student.getLastName());
-            preparedStatement.setDate(5, SQLDateUtil.parseDate(student.getDateOfBirth()));
+            preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(student.getDateOfBirth()));
             preparedStatement.setString(6, student.getSex());
             preparedStatement.setString(7, student.getGrade());
             preparedStatement.setString(8, student.getMedium());
@@ -323,7 +323,7 @@ public class StudentDAO extends UserDAO {
             preparedStatement.setString(11, student.getAddress());
             preparedStatement.setString(12, student.getEmail());
             preparedStatement.setString(13, student.getStatus());
-            preparedStatement.setDate(14, SQLDateUtil.parseDate(student.getJoinedDate()));
+            preparedStatement.setDate(14, SQLDateTimeUtil.parseDate(student.getJoinedDate()));
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {
