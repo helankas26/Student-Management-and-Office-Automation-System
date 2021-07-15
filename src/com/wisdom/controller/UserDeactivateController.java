@@ -126,10 +126,6 @@ public class UserDeactivateController implements Initializable {
         this.borderPaneMain = borderPaneMain;
     }
     
-    private RadioButton getPrivilege() {
-        RadioButton radGender =  (RadioButton) Privilege.getSelectedToggle();
-        return radGender;
-    }
 
     /**
      * Initializes the controller class.
