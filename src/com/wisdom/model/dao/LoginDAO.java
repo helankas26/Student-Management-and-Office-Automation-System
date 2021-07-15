@@ -482,5 +482,34 @@ public class LoginDAO {
         return valid;
     }
     
+    public boolean deleteUser(Login login) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteUser = "DELETE FROM login WHERE Status = ? AND LoginID = ?";
+            preparedStatement = con.prepareStatement(deleteUser, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, login.getStatus());
+            preparedStatement.setString(2, login.getLoginID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     
 }

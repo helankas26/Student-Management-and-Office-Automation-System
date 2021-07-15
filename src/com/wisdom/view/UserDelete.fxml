@@ -21,7 +21,7 @@
 
 <AnchorPane fx:id="anchorPaneUserDelete" prefHeight="704.8" prefWidth="1280.0" style="-fx-background-color: #e8c69b;" styleClass="anchorPaneMainCenter-border" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.UserDeleteController">
    <children>
-      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseOnAction" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/wisdom-title.png" />
@@ -37,7 +37,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSearch" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchActionPerformed" styleClass="btn-search">
+                  <Button fx:id="btnSearch" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchOnAction" styleClass="btn-search">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -83,7 +83,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <JFXCheckBox fx:id="chkShow" checkedColor="#0c5f17" layoutX="389.0" layoutY="48.0" onAction="#chkShowActionPerformed" text="Show" unCheckedColor="BLACK">
+                  <JFXCheckBox fx:id="chkShow" checkedColor="#0c5f17" layoutX="389.0" layoutY="48.0" onAction="#chkShowOnAction" text="Show" unCheckedColor="BLACK">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -104,39 +104,12 @@
                         <ToggleGroup fx:id="Privilege" />
                      </toggleGroup>
                   </JFXRadioButton>
-                  <JFXRadioButton fx:id="radStandard" layoutX="320.0" layoutY="120.0" selected="true" text="Standard" toggleGroup="$Privilege">
+                  <JFXRadioButton fx:id="radStandard" layoutX="320.0" layoutY="120.0" text="Standard" toggleGroup="$Privilege">
                      <selectedColor>
                         <Color red="0.062745101749897" green="0.43529412150382996" blue="0.6117647290229797" />
                      </selectedColor>
                   </JFXRadioButton>
                   <JFXRadioButton fx:id="radGuess" layoutX="410.0" layoutY="120.0" text="Guess" toggleGroup="$Privilege">
-                     <selectedColor>
-                        <Color red="0.062745101749897" green="0.43529412150382996" blue="0.6117647290229797" />
-                     </selectedColor>
-                  </JFXRadioButton>
-                  <Label layoutX="30.0" layoutY="150.0" text="Account for">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="30.0" layoutY="185.0" text="User ID">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="txtUserID" layoutX="200.0" layoutY="185.0" prefHeight="27.2" prefWidth="170.0" styleClass="textField" />
-                  <JFXRadioButton fx:id="radStaff" layoutX="200.0" layoutY="155.0" text="Staff">
-                     <selectedColor>
-                        <Color red="0.062745101749897" green="0.43529412150382996" blue="0.6117647290229797" />
-                     </selectedColor>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="For" />
-                     </toggleGroup>
-                  </JFXRadioButton>
-                  <JFXRadioButton fx:id="radTeacher" layoutX="280.0" layoutY="155.0" text="Teacher">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="For" />
-                     </toggleGroup>
                      <selectedColor>
                         <Color red="0.062745101749897" green="0.43529412150382996" blue="0.6117647290229797" />
                      </selectedColor>
@@ -163,7 +136,7 @@
             <TableColumn fx:id="tblTeacherNameUser" prefWidth="120.0" text="Teacher" />
          </columns>
       </TableView>
-      <Label layoutX="705.0" layoutY="375.0" text="Teacher" textFill="#2b1579">
+      <Label layoutX="705.0" layoutY="375.0" text="Teacher" textFill="#2b1579" AnchorPane.bottomAnchor="304.19999999999993" AnchorPane.rightAnchor="515.8">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -175,7 +148,7 @@
       </Label>
       <Pane layoutX="145.0" layoutY="360.0" prefHeight="80.0" prefWidth="460.0">
          <children>
-            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelOnAction" styleClass="btn-cancel">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -192,7 +165,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="btnDelete" focusTraversable="false" layoutX="240.0" mnemonicParsing="false" onAction="#btnDeleteActionPerformed" styleClass="btn-delete">
+            <Button fx:id="btnDelete" focusTraversable="false" layoutX="240.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" styleClass="btn-delete">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

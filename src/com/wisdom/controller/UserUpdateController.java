@@ -9,8 +9,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
 import com.wisdom.model.Login;
-import com.wisdom.model.Teacher;
-import com.wisdom.model.User;
 import com.wisdom.model.dao.LoginDAO;
 import java.net.URL;
 import java.util.ArrayList;
