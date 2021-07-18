@@ -296,7 +296,7 @@ public class UserInsertController implements Initializable {
             alert.initModality(Modality.APPLICATION_MODAL);
             alert.setTitle("Warning");
             alert.setHeaderText(null);
-            alert.setContentText("Username must be unique");
+            alert.setContentText("Username and Password must be unique");
             alert.showAndWait();
         }
     }
@@ -352,7 +352,7 @@ public class UserInsertController implements Initializable {
         }
         
         tblTeacherID.setCellValueFactory(new PropertyValueFactory<>("userID"));
-        tblTeacherName.setCellValueFactory(new PropertyValueFactory<>("firstName"));;
+        tblTeacherName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         
         tblTeacher.setItems(obslist);
     

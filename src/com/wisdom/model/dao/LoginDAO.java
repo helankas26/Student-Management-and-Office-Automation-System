@@ -9,6 +9,7 @@ import com.wisdom.model.Login;
 import com.wisdom.model.User;
 import com.wisdom.util.DBConnectionUtil;
 import com.wisdom.util.IDGeneratorUtil;
+import com.wisdom.util.SQLDateTimeUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -528,6 +529,82 @@ public class LoginDAO {
                 login.setUserName(resultSet.getString("UserName"));
                 login.setPrivilege(resultSet.getString("Privilege"));
                 
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
+    
+    public ArrayList<Login> getLoginRecordsByDate(String date) {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLoginRecordsByDate = "SELECT login_record.LoginID, login.UserName, login_record.LoginedDate, "
+                    + "login_record.LoginedTime FROM login_record INNER JOIN login ON login_record.LoginID = login.LoginID "
+                    + "WHERE LoginedDate = ? ORDER BY LoginedTime DESC";
+            preparedStatement = con.prepareStatement(getLoginRecordsByDate, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setDate(1, SQLDateTimeUtil.parseDate(date));
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setDate(resultSet.getString("LoginedDate"));
+                login.setTime(SQLDateTimeUtil.toStringTime(resultSet.getString("LoginedTime")));
+                
+                logintList.add(login);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return logintList;
+    }
+    
+    public ArrayList<Login> getLoginRecordsByLoginID(String loginID) {
+        ArrayList<Login> logintList = new ArrayList<Login>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getLoginRecordsByLoginID = "SELECT login_record.LoginID, login.UserName, login_record.LoginedDate, "
+                    + "login_record.LoginedTime FROM login_record INNER JOIN login ON login_record.LoginID = login.LoginID "
+                    + "WHERE login_record.LoginID = ? ORDER BY LoginedDate DESC, LoginedTime DESC";
+            preparedStatement = con.prepareStatement(getLoginRecordsByLoginID, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, loginID);
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Login login = new Login();
+                
+                login.setLoginID(resultSet.getString("LoginID"));
+                login.setUserName(resultSet.getString("UserName"));
+                login.setDate(resultSet.getString("LoginedDate"));
+                login.setTime(SQLDateTimeUtil.toStringTime(resultSet.getString("LoginedTime")));
+                               
                 logintList.add(login);
             }
               

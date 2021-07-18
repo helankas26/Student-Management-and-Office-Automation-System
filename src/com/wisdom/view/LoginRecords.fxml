@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="anchorPaneLoginRecords" prefHeight="704.8" prefWidth="1280.0" style="-fx-background-color: #9777a8;" styleClass="anchorPaneMainCenter-border" stylesheets="@../resources/Common.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.wisdom.controller.LoginRecordsController">
    <children>
-      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseOnAction" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/wisdom-title.png" />
@@ -32,7 +32,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSearchByID" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchByIDActionPerformed" styleClass="btn-search">
+                  <Button fx:id="btnSearchByID" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchByIDOnAction" styleClass="btn-search">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -67,7 +67,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSearchByDate" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchByDateActionPerformed" styleClass="btn-search">
+                  <Button fx:id="btnSearchByDate" disable="true" focusTraversable="false" layoutX="320.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnSearchByDateOnAction" styleClass="btn-search">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -79,12 +79,12 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label layoutX="330.0" layoutY="62.0" text="SEARCH">
+                  <Label disable="true" layoutX="330.0" layoutY="62.0" text="SEARCH">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <JFXDatePicker fx:id="dateLoginDate" layoutX="91.0" layoutY="30.0" />
+                  <DatePicker fx:id="dateLoginDate" layoutX="91.0" layoutY="30.0" onAction="#dateLoginDateOnAction" prefHeight="28.0" prefWidth="172.0" styleClass="textField" />
                </children>
             </AnchorPane>
          </children>
@@ -99,7 +99,7 @@
       </TableView>
       <Pane layoutX="160.0" layoutY="250.0" prefHeight="80.0" prefWidth="460.0">
          <children>
-            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelOnAction" styleClass="btn-cancel">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

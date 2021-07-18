@@ -7,6 +7,7 @@ package com.wisdom.util;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -24,6 +25,12 @@ public class SQLDateTimeUtil {
 
         return sqlDate;
     }
-
     
+    public static String toStringTime(String time) {
+        LocalTime localTime = LocalTime.parse(time);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+
+        return localTime.format(formatter);
+    }
+
 }

@@ -776,7 +776,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnLoginRecordsOnAction(ActionEvent event) {
+    private void btnLoginRecordsOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/LoginRecords.fxml"));
+        AnchorPane pane = loder.load();
+        
+        LoginRecordsController loginRecordsController = loder.getController();
+        loginRecordsController.setBorderPaneClose(borderPaneMain);
+        loginRecordsController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
      @FXML
