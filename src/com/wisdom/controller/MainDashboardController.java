@@ -559,7 +559,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnAdmissionDeleteOnAction(ActionEvent event) {
+    private void btnAdmissionDeleteOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/AdmissionDelete.fxml"));
+        AnchorPane pane = loder.load();
+        
+        AdmissionDeleteController admissionDeleteController = loder.getController();
+        admissionDeleteController.setBorderPaneClose(borderPaneMain);
+        admissionDeleteController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

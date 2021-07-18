@@ -89,6 +89,34 @@ public class AdmissionDAO {
         return valid;
     }
     
+    public boolean deleteAdmission(Admission admission) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteAdmission = "DELETE FROM admission WHERE StudentID = ?";
+            preparedStatement = con.prepareStatement(deleteAdmission, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, admission.getStudent().getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(AdmissionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdmissionDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     public ArrayList<Admission> getAdmissionByDate(String date) {
         ArrayList<Admission> admissionList = new ArrayList<Admission>();
         try {
