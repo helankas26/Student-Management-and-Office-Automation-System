@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -24,9 +25,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -108,6 +112,29 @@ public class LoginRecordsController implements Initializable {
     @FXML
     private void btnSearchByIDOnAction(ActionEvent event) {
         setTableViewByID();
+         if (!txtLoginID.getText().isEmpty()) {
+            
+            if (!setTableViewByID()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image("/com/wisdom/resources/wisdom-title.png"));
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.setTitle("Warning");
+                alert.setHeaderText(null);
+                alert.setContentText("Invalid LoginID");
+                alert.showAndWait();
+            }
+  
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+            stage.getIcons().add(new Image("/com/wisdom/resources/wisdom-title.png"));
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.setTitle("Warning");
+            alert.setHeaderText(null);
+            alert.setContentText("LoginID required to search");
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -147,22 +174,27 @@ public class LoginRecordsController implements Initializable {
     
     }
     
-    private void setTableViewByID() {
+    private boolean setTableViewByID() {
+        boolean valid  = false;
+        
         ObservableList<Login> obslist = FXCollections.observableArrayList();
         ArrayList<Login> loginList = loginDAO.getLoginRecordsByLoginID(txtLoginID.getText());
         
-        for(Login loginRow : loginList){
+        if (!loginList.isEmpty()) {
+            for(Login loginRow : loginList){
+                obslist.add(loginRow);
+                valid  = true;
+            }
 
-            obslist.add(loginRow);
+            tblLoginID.setCellValueFactory(new PropertyValueFactory<>("loginID"));  
+            tblUserame.setCellValueFactory(new PropertyValueFactory<>("username"));
+            tblDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            tblTime.setCellValueFactory(new PropertyValueFactory<>("time"));
+
+            tblLoginRecords.setItems(obslist);
         }
-        
-        tblLoginID.setCellValueFactory(new PropertyValueFactory<>("loginID"));  
-        tblUserame.setCellValueFactory(new PropertyValueFactory<>("username"));
-        tblDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        tblTime.setCellValueFactory(new PropertyValueFactory<>("time"));
-        
-        tblLoginRecords.setItems(obslist);
-        
+
+        return valid;
     }
     
 }
