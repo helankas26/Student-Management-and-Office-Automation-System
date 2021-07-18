@@ -51,5 +51,10 @@ public class Student extends User {
 //    public void setParent(Parent parent) {
 //        this.parent = parent;
 //    }
+
+    @Override
+    public String toString() {
+        return this.getInitial() + " " + this.getFirstName() + " " + this.getLastName();
+    }
     
 }

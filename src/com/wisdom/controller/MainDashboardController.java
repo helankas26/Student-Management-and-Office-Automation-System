@@ -546,7 +546,16 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnAdmissionUpdateOnAction(ActionEvent event) {
+    private void btnAdmissionUpdateOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/AdmissionUpdate.fxml"));
+        AnchorPane pane = loder.load();
+        
+        AdmissionUpdateController admissionUpdateController = loder.getController();
+        admissionUpdateController.setloginUser(loginUser);
+        admissionUpdateController.setBorderPaneClose(borderPaneMain);
+        admissionUpdateController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
