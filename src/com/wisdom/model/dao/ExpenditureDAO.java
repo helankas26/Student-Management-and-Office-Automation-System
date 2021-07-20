@@ -58,6 +58,39 @@ public class ExpenditureDAO {
         return valid;
     }
     
+    public boolean updateExpenditure(Expenditure expenditure) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String updateExpenditure = "UPDATE expenditure SET Expense = ?, Amount = ?, HandlerStaffID = ? "
+                    + "WHERE ExpenseID = ? AND Date = ?";
+            preparedStatement = con.prepareStatement(updateExpenditure, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, expenditure.getExpense());
+            preparedStatement.setDouble(2, expenditure.getExpenseAmount());
+            preparedStatement.setString(3, expenditure.getStaff().getUserID());
+            preparedStatement.setString(4, expenditure.getExpenseID());
+            preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(expenditure.getExpenseDate()));
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpenditureDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ExpenditureDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     public ArrayList<Expenditure> getExpenditureByDate(String date) {
         ArrayList<Expenditure> expenditureList = new ArrayList<Expenditure>();
         try {
