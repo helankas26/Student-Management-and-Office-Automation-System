@@ -163,6 +163,34 @@ public class AdvanceDAO {
         return valid;
     }
     
+    public boolean deleteAdvance(Advance advance) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteAdvance = "DELETE FROM advance WHERE AdvanceID = ?";
+            preparedStatement = con.prepareStatement(deleteAdvance, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, advance.getAdvanceID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     public ArrayList<Advance> getTeacherAdvanceByDate(String date) {
         ArrayList<Advance> expenditureList = new ArrayList<Advance>();
         try {
