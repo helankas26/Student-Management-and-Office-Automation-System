@@ -571,7 +571,16 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnExpenditureInsertOnAction(ActionEvent event) {
+    private void btnExpenditureInsertOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/ExpenditureInsert.fxml"));
+        AnchorPane pane = loder.load();
+        
+        ExpenditureInsertController expenditureInsertController = loder.getController();
+        expenditureInsertController.setloginUser(loginUser);
+        expenditureInsertController.setBorderPaneClose(borderPaneMain);
+        expenditureInsertController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
