@@ -179,10 +179,13 @@ public class ExpenditureInsertController implements Initializable {
     
     private void setTableView() {
         ObservableList<Expenditure> obslist = FXCollections.observableArrayList();
-        ArrayList<Expenditure> expenditureList = expenditureDAO.getExpenditureByDate(dateExpenseDate.getValue().toString());
-        
-        for(Expenditure expenditureRow : expenditureList){
-            obslist.add(expenditureRow);
+        ArrayList<Expenditure> expenditureList = null;
+        if (dateExpenseDate.getValue() != null) {
+            expenditureList = expenditureDAO.getExpenditureByDate(dateExpenseDate.getValue().toString());
+            
+            for(Expenditure expenditureRow : expenditureList){
+                obslist.add(expenditureRow);
+            }
         }
         
         tblExpenseID.setCellValueFactory(new PropertyValueFactory<>("expenseID"));
