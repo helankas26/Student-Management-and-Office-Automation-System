@@ -130,6 +130,39 @@ public class AdvanceDAO {
         return valid;
     }
     
+    public boolean updateAdvance(Advance advance) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String updateAdvance = "UPDATE advance SET Description = ?, Amount = ?, HandlerStaffID = ? "
+                    + "WHERE AdvanceID = ? AND Date = ?";
+            preparedStatement = con.prepareStatement(updateAdvance, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, advance.getDiscription());
+            preparedStatement.setDouble(2, advance.getAdvanceAmount());
+            preparedStatement.setString(3, advance.getStaffHandler().getUserID());
+            preparedStatement.setString(4, advance.getAdvanceID());
+            preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(advance.getAdvanceDate()));
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     public ArrayList<Advance> getTeacherAdvanceByDate(String date) {
         ArrayList<Advance> expenditureList = new ArrayList<Advance>();
         try {

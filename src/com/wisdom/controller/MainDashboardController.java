@@ -622,7 +622,16 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnTeacherAdvanceUpdateOnAction(ActionEvent event) {
+    private void btnTeacherAdvanceUpdateOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/TeacherAdvanceUpdate.fxml"));
+        AnchorPane pane = loder.load();
+        
+        TeacherAdvanceUpdateController teacherAdvanceUpdateController = loder.getController();
+        teacherAdvanceUpdateController.setloginUser(loginUser);
+        teacherAdvanceUpdateController.setBorderPaneClose(borderPaneMain);
+        teacherAdvanceUpdateController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
