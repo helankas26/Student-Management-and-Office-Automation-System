@@ -91,6 +91,34 @@ public class ExpenditureDAO {
         return valid;
     }
     
+    public boolean deleteExpenditure(Expenditure expenditure) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String deleteExpenditure = "DELETE FROM expenditure WHERE ExpenseID = ?";
+            preparedStatement = con.prepareStatement(deleteExpenditure, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, expenditure.getExpenseID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(ExpenditureDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ExpenditureDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
     public ArrayList<Expenditure> getExpenditureByDate(String date) {
         ArrayList<Expenditure> expenditureList = new ArrayList<Expenditure>();
         try {

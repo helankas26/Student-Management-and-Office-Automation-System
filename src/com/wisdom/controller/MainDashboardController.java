@@ -597,7 +597,15 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnExpenditureDeleteOnAction(ActionEvent event) {
+    private void btnExpenditureDeleteOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/ExpenditureDelete.fxml"));
+        AnchorPane pane = loder.load();
+        
+        ExpenditureDeleteController expenditureDeleteController = loder.getController();
+        expenditureDeleteController.setBorderPaneClose(borderPaneMain);
+        expenditureDeleteController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
