@@ -123,7 +123,6 @@ public class ExpenditureInsertController implements Initializable {
             getFields();
             
             if (expenditureDAO.insertExpenditure(expenditure)) {
-                setTableView();
                 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
@@ -135,9 +134,15 @@ public class ExpenditureInsertController implements Initializable {
                 
                 Optional<ButtonType> result = alert.showAndWait();
                 if (result.isPresent() && result.get() == ButtonType.OK) {
+                    LocalDate date = dateExpenseDate.getValue();
                     clearFields();
+                    dateExpenseDate.setValue(date);
+                    setTableView();
                 } else {
+                    LocalDate date = dateExpenseDate.getValue();
                     clearFields();
+                    dateExpenseDate.setValue(date);
+                    setTableView();
                 }
             }
             

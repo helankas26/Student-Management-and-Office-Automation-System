@@ -609,7 +609,16 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnTeacherAdvanceInsertOnAction(ActionEvent event) {
+    private void btnTeacherAdvanceInsertOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/TeacherAdvanceInsert.fxml"));
+        AnchorPane pane = loder.load();
+        
+        TeacherAdvanceInsertController teacherAdvanceInsertController = loder.getController();
+        teacherAdvanceInsertController.setloginUser(loginUser);
+        teacherAdvanceInsertController.setBorderPaneClose(borderPaneMain);
+        teacherAdvanceInsertController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

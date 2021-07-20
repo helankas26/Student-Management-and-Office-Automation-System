@@ -43,5 +43,10 @@ public class Teacher extends User {
     public void setClasses(ArrayList<Class> classes) {
         this.classes = classes;
     }
+
+    @Override
+    public String toString() {
+        return this.getInitial() + " " + this.getFirstName() + " " + this.getLastName();
+    }
     
 }
