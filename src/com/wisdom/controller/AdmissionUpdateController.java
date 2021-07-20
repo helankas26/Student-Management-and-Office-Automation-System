@@ -68,7 +68,7 @@ public class AdmissionUpdateController implements Initializable {
     @FXML
     private TableColumn<Admission, Student> tblStudentName;
     @FXML
-    private TableColumn<Admission, String> tblAdmissionFee;
+    private TableColumn<Admission, Double> tblAdmissionFee;
     @FXML
     private TableColumn<Admission, String> tblDate;
     @FXML

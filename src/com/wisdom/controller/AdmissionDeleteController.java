@@ -62,7 +62,7 @@ public class AdmissionDeleteController implements Initializable {
     @FXML
     private TableColumn<Admission, String> tblStudentName;
     @FXML
-    private TableColumn<Admission, String> tblAdmissionFee;
+    private TableColumn<Admission, Double> tblAdmissionFee;
     @FXML
     private TableColumn<Admission, String> tblDate;
     @FXML
