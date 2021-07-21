@@ -647,15 +647,41 @@ public class MainDashboardController implements Initializable {
     }
 
     @FXML
-    private void btnStaffAdvanceInsertOnAction(ActionEvent event) {
+    private void btnStaffAdvanceInsertOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StaffAdvanceInsert.fxml"));
+        AnchorPane pane = loder.load();
+        
+        StaffAdvanceInsertController staffAdvanceInsertController = loder.getController();
+        staffAdvanceInsertController.setloginUser(loginUser);
+        staffAdvanceInsertController.setBorderPaneClose(borderPaneMain);
+        staffAdvanceInsertController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
-    private void btnStaffAdvanceUpdateOnAction(ActionEvent event) {
+    private void btnStaffAdvanceUpdateOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StaffAdvanceUpdate.fxml"));
+        AnchorPane pane = loder.load();
+        
+        StaffAdvanceUpdateController staffAdvanceUpdateController = loder.getController();
+        staffAdvanceUpdateController.setloginUser(loginUser);
+        staffAdvanceUpdateController.setBorderPaneClose(borderPaneMain);
+        staffAdvanceUpdateController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML
-    private void btnStaffAdvanceDeleteOnAction(ActionEvent event) {
+    private void btnStaffAdvanceDeleteOnAction(ActionEvent event) throws IOException {
+        FXMLLoader loder = new FXMLLoader(getClass().getResource("/com/wisdom/view/StaffAdvanceDelete.fxml"));
+        AnchorPane pane = loder.load();
+        
+        StaffAdvanceDeleteController staffAdvanceDeleteController = loder.getController();
+        staffAdvanceDeleteController.setBorderPaneClose(borderPaneMain);
+        staffAdvanceDeleteController.setAnchorpaneClose(anchorPaneMainCenter);
+        borderPaneMain.setCenter(null);
+        borderPaneMain.setCenter(pane);
     }
 
     @FXML

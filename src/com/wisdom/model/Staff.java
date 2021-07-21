@@ -23,5 +23,10 @@ public class Staff extends User {
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
+    @Override
+    public String toString() {
+        return this.getInitial() + " " + this.getFirstName() + " " + this.getLastName();
+    }
+
 }

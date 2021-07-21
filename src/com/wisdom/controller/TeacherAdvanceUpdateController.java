@@ -149,7 +149,7 @@ public class TeacherAdvanceUpdateController implements Initializable {
             
             getFields();
             
-            if (advanceDAO.updateAdvance(advance)) {
+            if (advanceDAO.updateTeacherAdvance(advance)) {
                 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();

@@ -202,7 +202,7 @@ public class TeacherAdvanceDeleteController implements Initializable {
     }
     
     private void getFields() {
-        advance.setAdvanceID(txtAdvanceID.getText());;
+        advance.setAdvanceID(txtAdvanceID.getText());
     }
     
     private void setFields() {

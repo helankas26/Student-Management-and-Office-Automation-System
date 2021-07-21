@@ -109,7 +109,7 @@ public class AdvanceDAO {
             String insertLoginStaff = "INSERT INTO advance_staff (AdvanceID, StaffID) VALUES (?, ?)";
             preparedStatement = con.prepareStatement(insertLoginStaff, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, advance.getAdvanceID());
-            preparedStatement.setString(2, advance.getStaffHandler().getUserID());
+            preparedStatement.setString(2, advance.getStaffReceiver().getUserID());
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {
@@ -130,19 +130,54 @@ public class AdvanceDAO {
         return valid;
     }
     
-    public boolean updateAdvance(Advance advance) {
+    public boolean updateTeacherAdvance(Advance advance) {
         boolean valid = false;
         try {
             con = dbConnectionUtil.getConnection();
             
-            String updateAdvance = "UPDATE advance SET Description = ?, Amount = ?, HandlerStaffID = ? "
-                    + "WHERE AdvanceID = ? AND Date = ?";
-            preparedStatement = con.prepareStatement(updateAdvance, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String updateTeacherAdvance = "UPDATE advance_teacher_view SET Description = ?, Amount = ?, HandlerStaffID = ? "
+                    + "WHERE AdvanceID = ? AND Date = ? AND TeacherID = ?";
+            preparedStatement = con.prepareStatement(updateTeacherAdvance, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setString(1, advance.getDiscription());
             preparedStatement.setDouble(2, advance.getAdvanceAmount());
             preparedStatement.setString(3, advance.getStaffHandler().getUserID());
             preparedStatement.setString(4, advance.getAdvanceID());
             preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(advance.getAdvanceDate()));
+            preparedStatement.setString(6, advance.getTeacher().getUserID());
+            int rowAffected  = preparedStatement.executeUpdate();
+            
+            if (rowAffected  == 1) {
+               valid = true;
+            }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return valid;
+    }
+    
+    public boolean updateStaffAdvance(Advance advance) {
+        boolean valid = false;
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String updateStaffAdvance = "UPDATE advance_staff_view SET Description = ?, Amount = ?, HandlerStaffID = ? "
+                    + "WHERE AdvanceID = ? AND Date = ? AND StaffID = ?";
+            preparedStatement = con.prepareStatement(updateStaffAdvance, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setString(1, advance.getDiscription());
+            preparedStatement.setDouble(2, advance.getAdvanceAmount());
+            preparedStatement.setString(3, advance.getStaffHandler().getUserID());
+            preparedStatement.setString(4, advance.getAdvanceID());
+            preparedStatement.setDate(5, SQLDateTimeUtil.parseDate(advance.getAdvanceDate()));
+            preparedStatement.setString(6, advance.getStaffReceiver().getUserID());
             int rowAffected  = preparedStatement.executeUpdate();
             
             if (rowAffected  == 1) {
@@ -192,11 +227,11 @@ public class AdvanceDAO {
     }
     
     public ArrayList<Advance> getTeacherAdvanceByDate(String date) {
-        ArrayList<Advance> expenditureList = new ArrayList<Advance>();
+        ArrayList<Advance> advanceList = new ArrayList<Advance>();
         try {
             con = dbConnectionUtil.getConnection();
             
-            String getTeacherAdvanceByDate = "SELECT * FROM advance_teacher_view WHERE Date = ?";
+            String getTeacherAdvanceByDate = "SELECT * FROM advance_teacher_view WHERE Date = ? ORDER BY advance.AdvanceID DESC";
             preparedStatement = con.prepareStatement(getTeacherAdvanceByDate, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             preparedStatement.setDate(1, SQLDateTimeUtil.parseDate(date));
             resultSet = preparedStatement.executeQuery();
@@ -217,7 +252,7 @@ public class AdvanceDAO {
                 advance.getStaffHandler().setUserID(resultSet.getString("HandlerStaffID"));
                 advance.getStaffHandler().setFirstName(resultSet.getString("StaffName"));
 
-                expenditureList.add(advance);
+                advanceList.add(advance);
             }
               
         } catch (SQLException ex) {
@@ -232,7 +267,51 @@ public class AdvanceDAO {
             }
         }
         
-        return expenditureList;
+        return advanceList;
+    }
+    
+    public ArrayList<Advance> getStaffAdvanceByDate(String date) {
+        ArrayList<Advance> advanceList = new ArrayList<Advance>();
+        try {
+            con = dbConnectionUtil.getConnection();
+            
+            String getStaffAdvanceByDate = "SELECT * FROM advance_staff_view WHERE Date = ? ORDER BY advance.AdvanceID DESC";
+            preparedStatement = con.prepareStatement(getStaffAdvanceByDate, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            preparedStatement.setDate(1, SQLDateTimeUtil.parseDate(date));
+            resultSet = preparedStatement.executeQuery();
+            
+            while (resultSet.next()) {
+                Advance advance = new Advance();
+                
+                advance.setAdvanceID(resultSet.getString("AdvanceID"));
+                advance.setStaffReceiver(new Staff());
+                advance.getStaffReceiver().setUserID(resultSet.getString("StaffID"));
+                advance.getStaffReceiver().setInitial(resultSet.getString("Initial"));
+                advance.getStaffReceiver().setFirstName(resultSet.getString("FirstName"));
+                advance.getStaffReceiver().setLastName(resultSet.getString("LastName"));
+                advance.setDiscription(resultSet.getString("Description"));
+                advance.setAdvanceAmount(resultSet.getDouble("Amount"));
+                advance.setAdvanceDate(resultSet.getString("Date"));
+                advance.setStaffHandler(new Staff());
+                advance.getStaffHandler().setUserID(resultSet.getString("HandlerStaffID"));
+                advance.getStaffHandler().setFirstName(resultSet.getString("StaffName"));
+
+                advanceList.add(advance);
+            }
+              
+        } catch (SQLException ex) {
+            Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                resultSet.close();
+                preparedStatement.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdvanceDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return advanceList;
     }
     
 }

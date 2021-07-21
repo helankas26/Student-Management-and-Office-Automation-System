@@ -23,7 +23,7 @@
       <String fx:value="anchorPaneMainCenter-border" />
    </styleClass>
    <children>
-      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseActionPerformed" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
+      <JFXButton fx:id="btnCenterClose" focusTraversable="false" layoutX="1236.0" layoutY="-1.0" onAction="#btnCenterCloseOnAction" prefHeight="24.0" prefWidth="40.0" styleClass="btn-centerClose" text="X" textAlignment="CENTER" AnchorPane.rightAnchor="4.0" />
       <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/wisdom-title.png" />
@@ -44,14 +44,14 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dateAdvanceDate" focusTraversable="false" layoutX="130.0" layoutY="79.0" onAction="#dateAdvanceDateActionPerformed" prefWidth="170.0" styleClass="textField" />
+                  <DatePicker fx:id="dateAdvanceDate" focusTraversable="false" layoutX="130.0" layoutY="79.0" onAction="#dateAdvanceDateOnAction" prefWidth="170.0" styleClass="textField" />
                   <Label layoutX="30.0" layoutY="180.0" text="Description">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cmbStaff" layoutX="130.0" layoutY="29.0" onAction="#cmbStaffActionPerformed" prefWidth="250.0" styleClass="textField" />
-                  <TextArea fx:id="txtDescription" layoutX="130.0" layoutY="170.0" prefHeight="63.0" prefWidth="250.0" styleClass="textField" wrapText="true" />
+                  <ComboBox fx:id="cmbStaff" layoutX="130.0" layoutY="29.0" prefWidth="250.0" styleClass="textField" />
+                  <TextArea fx:id="txaDescription" layoutX="130.0" layoutY="170.0" prefHeight="63.0" prefWidth="250.0" styleClass="textField" wrapText="true" />
                   <Label layoutX="27.0" layoutY="4.0" text="Search by Staff or Date" textFill="#d90b0b">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -86,7 +86,7 @@
       </TableView>
       <Pane layoutX="140.0" layoutY="420.0" prefHeight="80.0" prefWidth="460.0">
          <children>
-            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelActionPerformed" styleClass="btn-cancel">
+            <Button fx:id="btnCancel" focusTraversable="false" layoutX="390.0" mnemonicParsing="false" onAction="#btnCancelOnAction" styleClass="btn-cancel">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,7 +103,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="btnDelete" focusTraversable="false" layoutX="240.0" mnemonicParsing="false" onAction="#btnDeleteActionPerformed" styleClass="btn-delete">
+            <Button fx:id="btnDelete" focusTraversable="false" layoutX="240.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" styleClass="btn-delete">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
